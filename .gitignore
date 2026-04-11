@@ -1,0 +1,65 @@
+# Root .gitignore for Dutch Learn Chat project
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# Package managers
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+out/
+target/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.bak
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Dependencies
+maven/
+/.m2
+
+# IDE-specific
+*.iml
+*.iws
+*.ipr
+.gradle/
+
+# Local development
+*.local.*
+
+# Local docs
+local_docs/
+
+# Environment files
+frontend/src/environments/environment.ts
+frontend/src/environments/environment.prod.ts
+
+# GitHub Copilot instructions
+.github/copilot-instructions.md

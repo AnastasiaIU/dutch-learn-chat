@@ -1,0 +1,65 @@
+# Frontend .gitignore for Angular project
+
+# Build outputs
+dist/
+build/
+out/
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-error.log
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+*~
+*.iml
+*.iws
+*.ipr
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+.AppleDouble
+.LSOverride
+
+# Angular
+.angular/
+.ng/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Dependencies lock files (optional - uncomment if you want to commit them)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Temporary files
+*.tmp
+*.bak
+*.old
+
+# macOS specific
+.AppleDB
+.AppleDesktop
+.apdisk
+
+# Linux specific
+.directory

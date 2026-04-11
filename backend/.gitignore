@@ -1,0 +1,78 @@
+# Backend .gitignore for Spring Boot project
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Build output
+build/
+out/
+dist/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Environment variables
+.env
+.env.local
+
+# Application properties with secrets
+src/main/resources/application-prod.yml
+src/main/resources/application-prod.yaml
+
+# Database files
+*.db
+h2/
+
+# Compiled class files
+*.class
+
+# IDE settings
+*.iml
+*.iws
+*.ipr
+
+# Java
+*.jar
+*.war
+*.nar
+!maven-wrapper.jar
+
+# Package Files
+*.zip
+*.tar.gz
+*.rar
+
+# Mac
+.AppleDouble
+.LSOverride
+.AppleDB
+.AppleDesktop
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Linux
+.directory

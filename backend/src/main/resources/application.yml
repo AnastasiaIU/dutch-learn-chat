@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: dutch-learn-chat
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dutch_learn_chat
+    username: 
+    password: 
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          batch_size: 20
+          fetch_size: 50
+        order_inserts: true
+        order_updates: true
+    show-sql: false
+    open-in-view: false
+  
+  web:
+    cors:
+      allowed-origins: http://localhost:4200,http://localhost:3000
+      allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+      allowed-headers: '*'
+      allow-credentials: true
+      max-age: 3600
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+jwt:
+  secret: ${JWT_SECRET:your-secret-key-change-this-in-production-env}
+  expiration: 86400000
+
+# AI Model Configuration
+ai:
+  openai:
+    api-key: ${OPENAI_API_KEY:}
+    model: gpt-4-turbo
+    language-level: A2-B1
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.dutchlearn: DEBUG
+    org.springframework.security: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/application.log
