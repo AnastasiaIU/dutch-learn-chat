@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { finalize } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 
 type AuthMode = 'login' | 'register';
@@ -174,17 +175,19 @@ export class AuthComponent {
     this.errorMessage = '';
     this.isSubmitting = true;
 
-    this.authService.login({ email, password }).subscribe({
-      next: (response) => {
-        this.authService.setAuth(response);
+    this.authService.login({ email, password })
+      .pipe(finalize(() => {
         this.isSubmitting = false;
-        void this.router.navigate(['/chat']);
-      },
-      error: (error: HttpErrorResponse) => {
-        this.isSubmitting = false;
-        this.errorMessage = this.mapError(error, 'Inloggen is mislukt. Controleer je gegevens.');
-      }
-    });
+      }))
+      .subscribe({
+        next: (response) => {
+          this.authService.setAuth(response);
+          void this.router.navigate(['/chat']);
+        },
+        error: (error: unknown) => {
+          this.errorMessage = this.mapError(error, 'Inloggen is mislukt. Controleer je gegevens.');
+        }
+      });
   }
 
   private register(): void {
@@ -211,20 +214,34 @@ export class AuthComponent {
       email,
       password,
       languageLevel: this.registerModel.languageLevel,
-    }).subscribe({
-      next: (response) => {
-        this.authService.setAuth(response);
+    })
+      .pipe(finalize(() => {
         this.isSubmitting = false;
-        void this.router.navigate(['/chat']);
-      },
-      error: (error: HttpErrorResponse) => {
-        this.isSubmitting = false;
-        this.errorMessage = this.mapError(error, 'Registratie is mislukt. Probeer het opnieuw.');
-      }
-    });
+      }))
+      .subscribe({
+        next: (response) => {
+          this.authService.setAuth(response);
+          void this.router.navigate(['/chat']);
+        },
+        error: (error: unknown) => {
+          this.errorMessage = this.mapError(error, 'Registratie is mislukt. Probeer het opnieuw.');
+        }
+      });
   }
 
-  private mapError(error: HttpErrorResponse, fallback: string): string {
+  private mapError(error: unknown, fallback: string): string {
+    if (typeof error === 'object' && error !== null && 'name' in error && (error as { name: string }).name === 'TimeoutError') {
+      return 'De server reageert niet op tijd. Probeer opnieuw.';
+    }
+
+    if (!(error instanceof HttpErrorResponse)) {
+      return fallback;
+    }
+
+    if (error.status === 0) {
+      return 'Kan geen verbinding maken met de server. Controleer of backend draait.';
+    }
+
     if (error.status === 401) {
       return 'Onjuiste e-mail of wachtwoord.';
     }

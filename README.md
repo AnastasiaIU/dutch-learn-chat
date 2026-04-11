@@ -47,7 +47,7 @@ cd backend
 mvn clean install
 
 # Run with H2 (in-memory database - no setup needed)
-mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"
+mvn spring-boot:run -D"spring-boot.run.arguments=--spring.profiles.active=dev"
 
 # API will be available at http://localhost:8080
 ```
@@ -130,7 +130,7 @@ This project prioritizes:
 
    ```bash
    cd backend
-   mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"
+   mvn spring-boot:run -D"spring-boot.run.arguments=--spring.profiles.active=dev"
    ```
 
 2. **Terminal 2 - Frontend (Port 4200):**

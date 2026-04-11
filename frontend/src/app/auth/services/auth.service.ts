@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { timeout } from 'rxjs/operators';
 
 export interface AuthResponse {
   userId: number;
@@ -33,11 +34,15 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   register(data: UserRegistration): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/register`, data);
+    return this.http
+      .post<AuthResponse>(`${this.apiUrl}/register`, data)
+      .pipe(timeout(10000));
   }
 
   login(data: UserLogin): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, data);
+    return this.http
+      .post<AuthResponse>(`${this.apiUrl}/login`, data)
+      .pipe(timeout(10000));
   }
 
   logout(): void {

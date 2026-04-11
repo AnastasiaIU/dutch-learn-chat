@@ -44,7 +44,7 @@ The server will start on `http://localhost:8080`
 ### Development with H2 (In-Memory Database)
 
 ```bash
-mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"
+mvn spring-boot:run -D"spring-boot.run.arguments=--spring.profiles.active=dev"
 ```
 
 Access H2 Console: `http://localhost:8080/h2-console`
@@ -160,7 +160,7 @@ taskkill /PID <PID> /F
 Then restart the Spring Boot application:
 
 ```bash
-mvn spring-boot:run -Dspring-boot.run.arguments="--spring.profiles.active=dev"
+mvn spring-boot:run -D"spring-boot.run.arguments=--spring.profiles.active=dev"
 ```
 
 **Database connection errors:**
