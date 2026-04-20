@@ -19,6 +19,11 @@ An educational web application designed to help immigrants in the Netherlands pr
 ✅ **User Authentication** - Secure login and session management  
 ✅ **AI Disclosure** - Clear transparency about AI interaction  
 ✅ **Feedback Mechanism** - Users can flag confusing or incorrect responses  
+✅ **RAG Context Injection** - Responses can use trusted local Dutch-learning context  
+✅ **Model Evaluation Loop** - Repeatable quality checks with pass/fail metrics  
+✅ **n8n Automation Ready** - Daily model report workflow template included  
+✅ **Admin Evaluation Dashboard** - Run evaluations and inspect stored report history  
+✅ **Role-Based Access** - Admin-only evaluation APIs and frontend route guarding  
 
 ## 🏗️ Project Structure
 
@@ -107,6 +112,10 @@ npm start
 - `GET /api/chat/history/{sessionId}` - Get message history
 - `GET /api/chat/sessions/{userId}` - Get user's sessions
 
+### Model Evaluation
+
+- `POST /api/evaluation/run` - Run suite and store report (admin)
+
 ## 🔐 Privacy & Ethics
 
 This project prioritizes:
@@ -121,50 +130,6 @@ This project prioritizes:
 
 - [Backend README](backend/README.md) - Setup, configuration, architecture
 - [Frontend README](frontend/README.md) - Setup, building, folder structure
-
-## 🛠️ Development Workflow
-
-### Setting up both Backend and Frontend
-
-1. **Terminal 1 - Backend (Port 8080):**
-
-   ```bash
-   cd backend
-   mvn spring-boot:run -D"spring-boot.run.arguments=--spring.profiles.active=dev"
-   ```
-
-2. **Terminal 2 - Frontend (Port 4200):**
-
-   ```bash
-   cd frontend
-   npm install
-   npm start
-   ```
-
-3. Open browser to `http://localhost:4200`
-
-### Testing the Integration
-
-1. **Register:** Create a new account
-2. **Login:** Authenticate with your credentials
-3. **Start Chat:** Begin a conversation in Dutch or English
-4. **Send Message:** The backend API responds with a mock Dutch response
-
-## 🧪 Testing
-
-### Backend
-
-```bash
-cd backend
-mvn test
-```
-
-### Frontend
-
-```bash
-cd frontend
-npm test
-```
 
 ## 📝 Configuration Files
 
@@ -185,8 +150,10 @@ jwt:
   expiration: 86400000
 
 ai:
-  openai:
-    api-key: ${OPENAI_API_KEY}
+  provider: github
+  language-level: A2-B1
+  api-key: ${GITHUB_TOKEN:}
+  model: gpt-4o-mini
 ```
 
 ### Frontend - `src/environments/environment.ts`

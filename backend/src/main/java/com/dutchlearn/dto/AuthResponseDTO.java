@@ -19,4 +19,5 @@ public class AuthResponseDTO {
     private String email;
     private String token;
     private String languageLevel;
+    private String role;
 }

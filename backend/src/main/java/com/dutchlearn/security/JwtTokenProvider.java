@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,7 @@ import java.security.NoSuchAlgorithmException;
  */
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class JwtTokenProvider {
 
     @Value("${jwt.secret:your-secret-key-change-this-in-production-env}")
@@ -34,8 +36,17 @@ public class JwtTokenProvider {
      * Generate JWT token from email
      */
     public String generateToken(String email) {
+        return generateToken(email, "LEARNER");
+    }
+
+    /**
+     * Generate JWT token from email and role
+     */
+    public String generateToken(String email, String role) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("email", email);
+        claims.put("role", role);
+        log.debug("Generating JWT token role={} subjectPresent={}", role, email != null && !email.isBlank());
         return createToken(claims, email);
     }
 
@@ -90,6 +101,15 @@ public class JwtTokenProvider {
     }
 
     /**
+     * Get role from token
+     */
+    public String getRoleFromToken(String token) {
+        Claims claims = getAllClaimsFromToken(token);
+        Object role = claims.get("role");
+        return role == null ? "LEARNER" : role.toString();
+    }
+
+    /**
      * Get all claims from token
      */
     private Claims getAllClaimsFromToken(String token) {
@@ -111,6 +131,7 @@ public class JwtTokenProvider {
                     .parseSignedClaims(token);
             return true;
         } catch (Exception e) {
+            log.debug("JWT token validation failed errorType={}", e.getClass().getSimpleName());
             return false;
         }
     }

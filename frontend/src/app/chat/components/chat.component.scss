@@ -55,6 +55,39 @@
   margin-top: 3px;
 }
 
+.session-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  margin: 0 20px;
+}
+
+.session-info-item {
+  min-width: 0;
+}
+
+.session-info-item.topic {
+  min-width: 180px;
+  max-width: 320px;
+}
+
+.session-info-label {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.session-info-value {
+  margin-top: 2px;
+  font-size: 13px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .vocab-toggle {
   border: 1px solid var(--accent);
   border-radius: 6px;
@@ -71,6 +104,22 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.admin-button {
+  border: 1px solid #7ad7ff;
+  border-radius: 6px;
+  background: transparent;
+  color: #7ad7ff;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-button:hover {
+  border-color: #b5ecff;
+  color: #b5ecff;
 }
 
 .logout-button {
@@ -348,6 +397,29 @@
 }
 
 @media (max-width: 980px) {
+  .chat-header {
+    height: auto;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+  }
+
+  .session-info {
+    order: 3;
+    width: 100%;
+    margin: 0;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    gap: 12px;
+  }
+
+  .session-info-item.topic {
+    min-width: 0;
+    max-width: none;
+    flex: 1;
+  }
+
   .message-stack {
     max-width: 82%;
   }

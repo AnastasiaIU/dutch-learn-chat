@@ -3,16 +3,19 @@ import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { LoggerService } from '../../shared/services/logger.service';
 
-export const authGuard: CanActivateFn = (_route, state) => {
+export const adminGuard: CanActivateFn = (_route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
   const logger = inject(LoggerService);
 
-  if (authService.isAuthenticated()) {
+  if (authService.isAdmin()) {
     return true;
   }
 
-  logger.warn('Navigation blocked by auth guard', { requestedUrl: state.url });
+  logger.warn('Navigation blocked by admin guard', {
+    requestedUrl: state.url,
+    role: authService.getRole(),
+  });
 
-  return router.createUrlTree(['/auth']);
+  return router.createUrlTree(['/chat']);
 };

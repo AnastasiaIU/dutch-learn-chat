@@ -6,11 +6,14 @@ import com.dutchlearn.dto.ChatMessageResponseDTO;
 import com.dutchlearn.entity.ChatMessage;
 import com.dutchlearn.entity.ChatSession;
 import com.dutchlearn.entity.User;
+import com.dutchlearn.logging.LogSanitizer;
 import com.dutchlearn.repository.ChatMessageRepository;
 import com.dutchlearn.repository.ChatSessionRepository;
 import com.dutchlearn.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -22,6 +25,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ChatService {
 
     private final ChatSessionRepository chatSessionRepository;
@@ -34,6 +38,7 @@ public class ChatService {
      * Create a new chat session
      */
     public ChatSession createSession(Long userId, String topic) {
+        log.debug("Creating session for userId={} hasTopic={}", userId, topic != null && !topic.isBlank());
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
@@ -43,16 +48,28 @@ public class ChatService {
                 .active(true)
                 .build();
 
-        return chatSessionRepository.save(session);
+        ChatSession saved = chatSessionRepository.save(session);
+        log.info("Session created sessionId={} userId={}", saved.getId(), userId);
+        return saved;
     }
 
     /**
      * Send a message and get AI response
      */
+        @Transactional
     public ChatMessageResponseDTO sendMessage(ChatMessageRequestDTO requestDTO) {
+        log.debug(
+                "Processing chat message sessionId={} language={} userMessageLength={}",
+                requestDTO.getSessionId(),
+                requestDTO.getLanguage(),
+                LogSanitizer.safeLength(requestDTO.getUserMessage()));
+
         // Get session
         ChatSession session = chatSessionRepository.findById(requestDTO.getSessionId())
                 .orElseThrow(() -> new IllegalArgumentException("Session not found"));
+
+        // Use recent history as conversational context for model quality.
+        List<ChatMessage> recentMessages = chatMessageRepository.findBySessionIdOrderByCreatedAtAsc(session.getId());
 
         // Save user message
         ChatMessage userMessage = ChatMessage.builder()
@@ -63,24 +80,50 @@ public class ChatService {
                 .build();
         userMessage = chatMessageRepository.save(userMessage);
 
-        // Get AI response (mock for now)
-        String aiResponseContent = generateAiResponse(requestDTO.getUserMessage(), session.getUser().getLanguageLevel());
+        // Generate AI response with guardrails, RAG, and provider metadata.
+        AiGenerationResult aiResult = aiService.generateResponse(
+                requestDTO.getUserMessage(),
+                session.getUser().getLanguageLevel(),
+                session.getTopic(),
+                recentMessages);
+
+        if (aiResult.isFallbackUsed()) {
+            log.warn(
+                    "AI fallback used sessionId={} model={} latencyMs={}",
+                    session.getId(),
+                    aiResult.getModel(),
+                    aiResult.getLatencyMs());
+        } else {
+                        log.debug(
+                    "AI response generated sessionId={} model={} latencyMs={}",
+                    session.getId(),
+                    aiResult.getModel(),
+                    aiResult.getLatencyMs());
+        }
 
         // Save AI response
         ChatMessage assistantMessage = ChatMessage.builder()
                 .session(session)
                 .role(ChatMessage.MessageRole.ASSISTANT)
-                .content(aiResponseContent)
+                .content(aiResult.getContent())
                 .languageUsed("nl")
+                .metadata(aiResult.getMetadataJson())
                 .build();
         assistantMessage = chatMessageRepository.save(assistantMessage);
 
         // Build response
-        return ChatMessageResponseDTO.builder()
+        ChatMessageResponseDTO response = ChatMessageResponseDTO.builder()
                 .sessionId(session.getId())
                 .userMessage(mapToDTO(userMessage))
                 .assistantMessage(mapToDTO(assistantMessage))
                 .build();
+
+        log.debug(
+                "Chat message persisted sessionId={} userMessageId={} assistantMessageId={}",
+                session.getId(),
+                userMessage.getId(),
+                assistantMessage.getId());
+        return response;
     }
 
     /**
@@ -88,6 +131,7 @@ public class ChatService {
      */
     public List<ChatMessageDTO> getChatHistory(Long sessionId) {
         List<ChatMessage> messages = chatMessageRepository.findBySessionIdOrderByCreatedAtAsc(sessionId);
+        log.debug("Loaded chat history sessionId={} messageCount={}", sessionId, messages.size());
         return messages.stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
@@ -97,19 +141,9 @@ public class ChatService {
      * Get all sessions for a user
      */
     public List<ChatSession> getUserSessions(Long userId) {
-        return chatSessionRepository.findByUserIdOrderByCreatedAtDesc(userId);
-    }
-
-    /**
-     * Generate AI response (temporary implementation)
-     * TODO: Integrate with actual LLM API (OpenAI, Anthropic)
-     */
-    private String generateAiResponse(String userMessage, String languageLevel) {
-        // This is a placeholder implementation
-        // In production, this would call the actual LLM API
-
-        return "Dit is een test antwoord. Je hebt geschreven: '" + userMessage + "'. " +
-                "(Opmerking: Dit is een prototype. AI integratie volgt.)";
+                List<ChatSession> sessions = chatSessionRepository.findByUserIdOrderByCreatedAtDesc(userId);
+                log.debug("Loaded sessions for userId={} sessionCount={}", userId, sessions.size());
+                return sessions;
     }
 
     /**

@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { finalize } from 'rxjs';
 import { ChatService, ChatMessage } from '../services/chat.service';
 import { AuthService } from '../../auth/services/auth.service';
+import { LoggerService } from '../../shared/services/logger.service';
 
 interface VocabularyWord {
   word: string;
@@ -35,7 +38,26 @@ interface ChatDisplayMessage {
             <div class="brand-subtitle">A2/B1 Gesprekspartner</div>
           </div>
         </div>
+
+        <div class="session-info">
+          <div class="session-info-item">
+            <div class="session-info-label">Gebruiker</div>
+            <div class="session-info-value">{{ currentUsername || 'Onbekend' }}</div>
+          </div>
+          <div class="session-info-item">
+            <div class="session-info-label">Niveau</div>
+            <div class="session-info-value">{{ currentLanguageLevel || 'A2/B1' }}</div>
+          </div>
+          <div class="session-info-item topic">
+            <div class="session-info-label">Onderwerp</div>
+            <div class="session-info-value">{{ currentTopic || 'Nog niet gekozen' }}</div>
+          </div>
+        </div>
+
         <div class="header-actions">
+          <button class="admin-button" *ngIf="isAdmin" (click)="openAdminDashboard()">
+            Admin
+          </button>
           <button class="vocab-toggle" (click)="toggleVocabularyPanel()">
             📖 Woorden
             <span *ngIf="vocabularyWords.length > 0">({{ vocabularyWords.length }})</span>
@@ -79,11 +101,11 @@ interface ChatDisplayMessage {
 
           <div class="composer">
             <textarea
+              #messageInput
               [(ngModel)]="userMessage"
               name="userMessage"
               rows="2"
-              placeholder="Schrijf hier in het Nederlands... (of in English)"
-              [disabled]="isLoading"
+              [placeholder]="currentSessionId ? 'Schrijf hier in het Nederlands... (of in English)' : 'Kies een onderwerp en stuur je eerste bericht...'"
               (keydown)="onInputKeyDown($event)"
             ></textarea>
 
@@ -125,9 +147,16 @@ interface ChatDisplayMessage {
   `,
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterViewInit {
   private readonly vocabularyStorageKey = 'dutch-learn-chat.vocabulary';
+  private readonly maxSessionRecoveryAttempts = 1;
+  private readonly maxTopicLength = 500;
   private localMessageId = -1;
+  private isSessionInitializing = false;
+  private pendingMessage: string | null = null;
+  private pendingMessageShown = false;
+  private sessionRecoveryAttempts = 0;
+  @ViewChild('messageInput') private messageInputRef?: ElementRef<HTMLTextAreaElement>;
 
   messages: ChatDisplayMessage[] = [];
   vocabularyWords: VocabularyWord[] = [];
@@ -136,17 +165,33 @@ export class ChatComponent implements OnInit {
   isLoading: boolean = false;
   errorMessage: string = '';
   currentSessionId: number | null = null;
+  currentTopic: string = '';
+  currentUsername: string = '';
+  currentLanguageLevel: string = '';
+  isAdmin: boolean = false;
 
   constructor(
-    private chatService: ChatService,
-    private authService: AuthService,
-    private router: Router,
+    private readonly chatService: ChatService,
+    private readonly authService: AuthService,
+    private readonly router: Router,
+    private readonly logger: LoggerService,
+    private readonly zone: NgZone,
+    private readonly cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
+    const auth = this.authService.getAuth();
+
+    this.logger.info('Chat component initialized');
+    this.isAdmin = this.authService.isAdmin();
+    this.currentUsername = auth?.username ?? '';
+    this.currentLanguageLevel = auth?.languageLevel ?? '';
     this.vocabularyWords = this.loadStoredVocabulary();
     this.messages = [this.createWelcomeMessage()];
-    this.initializeChat();
+  }
+
+  ngAfterViewInit(): void {
+    this.focusComposerInput();
   }
 
   trackByMessage(index: number, message: ChatDisplayMessage): number {
@@ -164,22 +209,49 @@ export class ChatComponent implements OnInit {
     }
   }
 
-  initializeChat(): void {
+  private ensureSession(initialTopic: string = '', onReady?: () => void): void {
+    if (this.currentSessionId) {
+      this.logger.debug('Chat session already available', { sessionId: this.currentSessionId });
+      onReady?.();
+      return;
+    }
+
+    if (this.isSessionInitializing) {
+      return;
+    }
+
     const auth = this.authService.getAuth();
 
     if (!auth) {
+      this.logger.warn('Chat session initialization blocked because user is not authenticated');
       void this.router.navigate(['/auth']);
       return;
     }
 
-    this.chatService.createSession(auth.userId, 'Friendly Conversation').subscribe({
+    this.isSessionInitializing = true;
+    const topicForSession = (this.currentTopic || initialTopic).trim();
+    this.logger.info('Chat session initialization started', { userId: auth.userId });
+
+    this.chatService.createSession(auth.userId, topicForSession).subscribe({
       next: (session) => {
         this.currentSessionId = session.id;
+        this.currentTopic = (session.topic ?? '').trim() || topicForSession;
+        this.isSessionInitializing = false;
+        this.logger.info('Chat session initialization completed', { sessionId: session.id });
         this.loadChatHistory();
+        onReady?.();
+        this.sendPendingMessageIfAny();
       },
-      error: (error) => {
-        this.errorMessage = 'Failed to create chat session';
-        console.error(error);
+      error: (error: unknown) => {
+        this.isSessionInitializing = false;
+        this.errorMessage = this.mapChatError(error, 'Kan chatsessie niet starten. Log opnieuw in.');
+        this.logger.error('Chat session initialization failed', {
+          status: error instanceof HttpErrorResponse ? error.status : 'unknown',
+        });
+        if (error instanceof HttpErrorResponse && [400, 401, 403].includes(error.status)) {
+          this.authService.logout();
+          void this.router.navigate(['/auth']);
+        }
       }
     });
   }
@@ -191,36 +263,20 @@ export class ChatComponent implements OnInit {
       return;
     }
 
+    this.logger.info('Send message requested', {
+      sessionId: this.currentSessionId,
+      messageLength: content.length,
+    });
+
     if (!this.currentSessionId) {
-      this.errorMessage = 'Log in om berichten te versturen.';
+      this.pendingMessage = content;
+      this.pendingMessageShown = false;
+      this.errorMessage = 'Chatsessie wordt gestart. Je bericht wordt automatisch verzonden.';
+      this.ensureSession(this.currentTopic || this.buildSessionTopic(content));
       return;
     }
 
-    this.isLoading = true;
-    this.errorMessage = '';
-
-    const request = {
-      sessionId: this.currentSessionId,
-      userMessage: content,
-      language: 'auto'
-    };
-
-    this.chatService.sendMessage(request).subscribe({
-      next: (response) => {
-        const user = this.toDisplayMessage(response.userMessage);
-        const assistant = this.toDisplayMessage(response.assistantMessage);
-
-        this.messages.push(user, assistant);
-        this.captureVocabulary(assistant.vocabulary);
-        this.userMessage = '';
-        this.isLoading = false;
-      },
-      error: (error) => {
-        this.errorMessage = 'Failed to send message. Please try again.';
-        console.error(error);
-        this.isLoading = false;
-      }
-    });
+    this.sendMessageWithSession(content, false);
   }
 
   deleteVocabularyWord(word: string): void {
@@ -231,7 +287,12 @@ export class ChatComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.currentSessionId = null;
+    this.currentTopic = '';
     void this.router.navigate(['/auth']);
+  }
+
+  openAdminDashboard(): void {
+    void this.router.navigate(['/admin/evaluation']);
   }
 
   private loadChatHistory(): void {
@@ -239,13 +300,20 @@ export class ChatComponent implements OnInit {
       return;
     }
 
+    this.logger.debug('Loading chat history', { sessionId: this.currentSessionId });
+
     this.chatService.getChatHistory(this.currentSessionId).subscribe({
       next: (history) => {
         if (history.length === 0) {
+          this.logger.debug('Chat history is empty', { sessionId: this.currentSessionId });
           return;
         }
 
         this.messages = history.map((message) => this.toDisplayMessage(message));
+        this.logger.info('Chat history loaded', {
+          sessionId: this.currentSessionId,
+          messageCount: history.length,
+        });
 
         for (const message of this.messages) {
           if (!message.isUser && message.vocabulary.length > 0) {
@@ -253,23 +321,191 @@ export class ChatComponent implements OnInit {
           }
         }
       },
-      error: (error) => {
-        console.error('Failed to load chat history', error);
+      error: (error: unknown) => {
+        this.errorMessage = this.mapChatError(error, 'Chatgeschiedenis laden is mislukt.');
+        this.logger.warn('Failed to load chat history', {
+          sessionId: this.currentSessionId,
+          status: error instanceof HttpErrorResponse ? error.status : 'unknown',
+        });
       }
     });
+  }
+
+  private sendPendingMessageIfAny(): void {
+    if (!this.pendingMessage || !this.currentSessionId || this.isLoading) {
+      return;
+    }
+
+    const messageToSend = this.pendingMessage;
+    const wasAlreadyShown = this.pendingMessageShown;
+    this.pendingMessage = null;
+    this.pendingMessageShown = false;
+    this.sendMessageWithSession(messageToSend, wasAlreadyShown);
+  }
+
+  private sendMessageWithSession(content: string, messageAlreadyShown: boolean): void {
+    if (!this.currentSessionId) {
+      this.pendingMessage = content;
+      this.pendingMessageShown = messageAlreadyShown;
+      this.ensureSession(this.currentTopic || this.buildSessionTopic(content));
+      return;
+    }
+
+    if (!messageAlreadyShown) {
+      const localUserMessage = this.createLocalUserMessage(content);
+      this.messages.push(localUserMessage);
+      this.userMessage = '';
+      this.focusComposerInput();
+    }
+
+    this.updateLoadingState(true);
+    this.errorMessage = '';
+
+    const request = {
+      sessionId: this.currentSessionId,
+      userMessage: content,
+      language: 'auto'
+    };
+
+    this.chatService.sendMessage(request)
+      .pipe(finalize(() => {
+        this.updateLoadingState(false);
+        this.focusComposerInput();
+      }))
+      .subscribe({
+      next: (response) => {
+        try {
+          const assistantSource = response?.assistantMessage ?? {
+            id: this.localMessageId--,
+            role: 'ASSISTANT',
+            content: 'Er ging iets mis met het antwoord. Probeer opnieuw.',
+            languageUsed: 'nl',
+            createdAt: new Date().toISOString(),
+          };
+
+          const assistant = this.toDisplayMessage(assistantSource);
+          this.messages.push(assistant);
+          this.captureVocabulary(assistant.vocabulary);
+          this.sessionRecoveryAttempts = 0;
+
+          this.logger.info('Send message completed', {
+            sessionId: this.currentSessionId,
+            assistantMessageId: assistant.id,
+            vocabularyCount: assistant.vocabulary.length,
+          });
+        } catch (processingError) {
+          this.errorMessage = 'Antwoord ontvangen, maar verwerken is mislukt. Probeer opnieuw.';
+          this.logger.error('Send message response processing failed', {
+            sessionId: request.sessionId,
+            errorType: processingError instanceof Error ? processingError.name : 'unknown',
+          });
+        }
+      },
+      error: (error: unknown) => {
+        if (
+          error instanceof HttpErrorResponse
+          && error.status === 400
+          && this.sessionRecoveryAttempts < this.maxSessionRecoveryAttempts
+        ) {
+          this.sessionRecoveryAttempts += 1;
+          this.currentSessionId = null;
+          this.pendingMessage = content;
+          this.pendingMessageShown = true;
+          this.updateLoadingState(false);
+          this.errorMessage = 'Chatsessie vernieuwen... Je bericht wordt opnieuw verzonden.';
+          this.logger.warn('Session recovery triggered after send message failure', {
+            previousSessionId: request.sessionId,
+            status: error.status,
+            recoveryAttempt: this.sessionRecoveryAttempts,
+          });
+          this.ensureSession(this.currentTopic || this.buildSessionTopic(content));
+          return;
+        }
+
+        this.errorMessage = this.mapChatError(error, 'Bericht verzenden is mislukt. Probeer het opnieuw.');
+        this.logger.error('Send message failed', {
+          sessionId: request.sessionId,
+          status: error instanceof HttpErrorResponse ? error.status : 'unknown',
+        });
+      }
+    });
+  }
+
+  private buildSessionTopic(prompt: string): string {
+    const trimmedPrompt = prompt.trim();
+
+    if (trimmedPrompt.length <= this.maxTopicLength) {
+      return trimmedPrompt;
+    }
+
+    this.logger.warn('Topic derived from first prompt was truncated', {
+      originalLength: trimmedPrompt.length,
+      maxTopicLength: this.maxTopicLength,
+    });
+
+    return trimmedPrompt.slice(0, this.maxTopicLength);
+  }
+
+  private focusComposerInput(): void {
+    setTimeout(() => {
+      const input = this.messageInputRef?.nativeElement;
+      if (!input) {
+        return;
+      }
+
+      input.focus();
+      const cursorPosition = input.value.length;
+      input.setSelectionRange(cursorPosition, cursorPosition);
+    }, 0);
+  }
+
+  private updateLoadingState(value: boolean): void {
+    this.zone.run(() => {
+      this.isLoading = value;
+      this.cdr.markForCheck();
+    });
+  }
+
+  private mapChatError(error: unknown, fallback: string): string {
+    if (typeof error === 'object' && error !== null && 'name' in error && (error as { name: string }).name === 'TimeoutError') {
+      return 'Het antwoord duurt te lang. Probeer opnieuw.';
+    }
+
+    if (!(error instanceof HttpErrorResponse)) {
+      return fallback;
+    }
+
+    if (error.status === 0) {
+      return 'Kan geen verbinding maken met de server. Controleer of backend draait op poort 8080.';
+    }
+
+    if (error.status === 401 || error.status === 403) {
+      return 'Je sessie is verlopen. Log opnieuw in.';
+    }
+
+    if (error.status === 400) {
+      return 'De chatsessie is ongeldig. Log opnieuw in om een nieuwe sessie te maken.';
+    }
+
+    if (error.status >= 500) {
+      return 'Er ging iets mis op de server. Probeer het zo opnieuw.';
+    }
+
+    return fallback;
   }
 
   private toDisplayMessage(message: ChatMessage): ChatDisplayMessage {
     const role = (message.role ?? 'ASSISTANT').toUpperCase();
     const vocabulary = this.extractVocabulary(message.content ?? '');
     const mainContent = this.stripVocabularySection(message.content ?? '');
+    const createdAt = this.normalizeCreatedAt(message.createdAt);
 
     return {
       id: typeof message.id === 'number' ? message.id : this.localMessageId--,
       role,
       content: message.content ?? '',
       languageUsed: message.languageUsed ?? 'nl',
-      createdAt: message.createdAt ?? new Date().toISOString(),
+      createdAt,
       mainContent,
       vocabulary,
       isUser: role === 'USER',
@@ -281,13 +517,25 @@ export class ChatComponent implements OnInit {
       id: this.localMessageId--,
       role: 'ASSISTANT',
       content:
-        'Hallo! Ik ben je Nederlandse gesprekspartner. Hoe gaat het met je?\n\n' +
-        'Wil je oefenen met een onderwerp? Bijvoorbeeld:\n' +
+        'Hallo! Ik ben je Nederlandse gesprekspartner.\n\n' +
+        'Kies eerst een onderwerp om mee te oefenen. Je kunt een onderwerp uit de lijst kiezen of je eigen onderwerp typen.\n\n' +
+        'Bijvoorbeeld:\n' +
         '• Boodschappen doen\n' +
         '• Op het werk\n' +
         '• In de trein\n' +
-        '• Het weer',
+        '• Het weer\n\n' +
+        'Schrijf nu welk onderwerp je wilt oefenen.',
       languageUsed: 'nl',
+      createdAt: new Date().toISOString(),
+    });
+  }
+
+  private createLocalUserMessage(content: string): ChatDisplayMessage {
+    return this.toDisplayMessage({
+      id: this.localMessageId--,
+      role: 'USER',
+      content,
+      languageUsed: 'auto',
       createdAt: new Date().toISOString(),
     });
   }
@@ -318,6 +566,28 @@ export class ChatComponent implements OnInit {
 
   private stripVocabularySection(content: string): string {
     return content.replace(/\n?\s*📚\s*Moeilijke woorden:[\s\S]*$/i, '').trim();
+  }
+
+  private normalizeCreatedAt(value: string | undefined): string {
+    if (!value) {
+      return new Date().toISOString();
+    }
+
+    const parsed = Date.parse(value);
+    if (!Number.isNaN(parsed)) {
+      return new Date(parsed).toISOString();
+    }
+
+    // Some backends return timezone-less timestamps; try UTC interpretation.
+    const parsedAsUtc = Date.parse(`${value}Z`);
+    if (!Number.isNaN(parsedAsUtc)) {
+      return new Date(parsedAsUtc).toISOString();
+    }
+
+    this.logger.warn('Invalid message timestamp received', {
+      timestampLength: value.length,
+    });
+    return new Date().toISOString();
   }
 
   private captureVocabulary(words: VocabularyWord[]): void {

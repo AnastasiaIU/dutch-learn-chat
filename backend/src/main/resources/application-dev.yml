@@ -13,4 +13,13 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
-    show-sql: true
+    show-sql: false
+
+automation:
+  n8n:
+    api-key: local-dev-n8n-key
+
+# Override AI settings for local testing if needed
+# ai:
+#   mock:
+#     enabled: true # Uncomment if you don't have a GitHub token yet

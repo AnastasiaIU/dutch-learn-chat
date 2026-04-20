@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { finalize } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
+import { LoggerService } from '../../shared/services/logger.service';
 
 type AuthMode = 'login' | 'register';
 
@@ -143,11 +144,13 @@ export class AuthComponent {
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
+    private readonly logger: LoggerService,
   ) {}
 
   switchMode(mode: AuthMode): void {
     this.mode = mode;
     this.errorMessage = '';
+    this.logger.debug('Auth mode switched', { mode });
   }
 
   submit(): void {
@@ -174,6 +177,7 @@ export class AuthComponent {
 
     this.errorMessage = '';
     this.isSubmitting = true;
+    this.logger.info('Auth login submit started');
 
     this.authService.login({ email, password })
       .pipe(finalize(() => {
@@ -182,10 +186,17 @@ export class AuthComponent {
       .subscribe({
         next: (response) => {
           this.authService.setAuth(response);
+          this.logger.info('Auth login submit succeeded', {
+            userId: response.userId,
+            role: response.role,
+          });
           void this.router.navigate(['/chat']);
         },
         error: (error: unknown) => {
           this.errorMessage = this.mapError(error, 'Inloggen is mislukt. Controleer je gegevens.');
+          this.logger.warn('Auth login submit failed', {
+            status: error instanceof HttpErrorResponse ? error.status : 'unknown',
+          });
         }
       });
   }
@@ -208,6 +219,10 @@ export class AuthComponent {
 
     this.errorMessage = '';
     this.isSubmitting = true;
+    this.logger.info('Auth register submit started', {
+      languageLevel: this.registerModel.languageLevel,
+      usernameLength: username.length,
+    });
 
     this.authService.register({
       username,
@@ -221,10 +236,17 @@ export class AuthComponent {
       .subscribe({
         next: (response) => {
           this.authService.setAuth(response);
+          this.logger.info('Auth register submit succeeded', {
+            userId: response.userId,
+            role: response.role,
+          });
           void this.router.navigate(['/chat']);
         },
         error: (error: unknown) => {
           this.errorMessage = this.mapError(error, 'Registratie is mislukt. Probeer het opnieuw.');
+          this.logger.warn('Auth register submit failed', {
+            status: error instanceof HttpErrorResponse ? error.status : 'unknown',
+          });
         }
       });
   }

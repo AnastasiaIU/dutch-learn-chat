@@ -37,6 +37,9 @@ src/
 ├── app/
 │   ├── auth/              # Authentication feature
 │   │   └── services/
+│   ├── admin/             # Admin evaluation dashboard
+│   │   ├── components/
+│   │   └── services/
 │   ├── chat/              # Chat feature
 │   │   ├── components/
 │   │   └── services/
@@ -52,7 +55,8 @@ src/
 
 - **Standalone Components:** Uses Angular v21+ standalone API
 - **Reactive Forms:** RxJS-based reactive patterns
-- **HTTP Interceptors:** Easy to add authentication headers
+- **Role-Based Routing:** Admin routes protected by auth + admin guards
+- **Admin Evaluation Page:** Run model checks and inspect stored report history
 - **Responsive Design:** Mobile-friendly UI
 
 ### Configuration

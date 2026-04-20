@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   application:
     name: dutch-learn-chat
   
@@ -39,21 +41,43 @@ jwt:
   secret: ${JWT_SECRET:your-secret-key-change-this-in-production-env}
   expiration: 86400000
 
+automation:
+  n8n:
+    api-key: ${N8N_API_KEY:}
+
 # AI Model Configuration
 ai:
-  openai:
-    api-key: ${OPENAI_API_KEY:}
-    model: gpt-4-turbo
-    language-level: A2-B1
+  provider: github
+  language-level: A2-B1
+  api-key: ${GITHUB_TOKEN:}
+  model: gpt-4o-mini
+  temperature: 0.4
+  max-tokens: 320
+  request-timeout-seconds: 45
+  mock:
+    enabled: false
+  prompt:
+    version: v1-a2b1-guardrails
+  rag:
+    enabled: true
+    knowledge-base-path: rag/dutch-learning-kb.json
+    max-context-items: 3
+    max-snippet-chars: 220
 
 # Logging
 logging:
   level:
     root: INFO
-    com.dutchlearn: DEBUG
-    org.springframework.security: DEBUG
+    com.dutchlearn: INFO
+    org.springframework.security: WARN
+    org.hibernate: WARN
   pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
   file:
     name: logs/application.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 7
+      total-size-cap: 100MB

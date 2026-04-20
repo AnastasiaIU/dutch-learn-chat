@@ -64,6 +64,10 @@ Access H2 Console: `http://localhost:8080/h2-console`
 - `GET /api/chat/history/{sessionId}` - Get chat history
 - `GET /api/chat/sessions/{userId}` - Get user sessions
 
+**Model Evaluation:**
+
+- `POST /api/evaluation/run` - Run suite and store report (Admin only)
+
 ### Project Structure
 
 ```
@@ -102,11 +106,27 @@ jwt:
   secret: your-secret-key
   expiration: 86400000  # 24 hours
 
+automation:
+  n8n:
+    api-key: ${N8N_API_KEY}
+
 ai:
-  openai:
-    api-key: ${OPENAI_API_KEY}
-    model: gpt-4-turbo
-    language-level: A2-B1
+  provider: github
+  language-level: A2-B1
+  api-key: ${GITHUB_TOKEN:}
+  model: gpt-4o-mini # Anthropic-Claude-3.5-Sonnet, google-gemini-1.5-pro
+  temperature: 0.4
+  max-tokens: 320
+  request-timeout-seconds: 45
+  mock:
+    enabled: false
+  prompt:
+    version: v1-a2b1-guardrails
+  rag:
+    enabled: true
+    knowledge-base-path: rag/dutch-learning-kb.json
+    max-context-items: 3
+    max-snippet-chars: 220
 
 spring:
   web:
@@ -116,12 +136,21 @@ spring:
 
 ### Environment Variables
 
-Create a `.env` file or set system environment variables:
+Create a `.env` file in `backend/` or set system environment variables:
 
 ```
-OPENAI_API_KEY=your-api-key
+GITHUB_TOKEN=your-github-personal-access-token
 JWT_SECRET=your-secret-key
+N8N_API_KEY=local-dev-n8n-key
 ```
+
+`GITHUB_TOKEN` must include GitHub Models access. If this permission is missing, model calls return `401 Unauthorized` with an error like "models permission is required".
+
+### Development Test Accounts (dev profile)
+
+- Learner A2: `a2@test.com` / `a2`
+- Learner B1: `b1@test.com` / `b1`
+- Admin: `admin@test.com` / `admin`
 
 ### Building
 
@@ -142,6 +171,20 @@ java -jar target/dutch-learn-chat-1.0.0.jar
 ```bash
 mvn test
 ```
+
+### Run Model Evaluation Loop
+
+```powershell
+Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/evaluation/run"
+```
+
+This returns per-case quality checks and a summary pass rate.
+
+### RAG Knowledge Base
+
+- `src/main/resources/rag/dutch-learning-kb.json`
+
+The app retrieves matching snippets from this file and injects them into the system prompt.
 
 ### Common Issues
 

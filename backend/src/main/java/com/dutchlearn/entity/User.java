@@ -45,6 +45,11 @@ public class User {
     @Column(name = "last_login")
     private LocalDateTime lastLogin;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 32)
+    @Default
+    private UserRole role = UserRole.LEARNER;
+
     @Default
     private Boolean active = true;
 
@@ -57,5 +62,10 @@ public class User {
     @PreUpdate
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    public enum UserRole {
+        ADMIN,
+        LEARNER
     }
 }
