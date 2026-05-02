@@ -29,8 +29,8 @@ public class DevUserSeeder implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        seedOrUpdateUser("Joe Alevel", "a2@test.com", "a2", "A2", User.UserRole.LEARNER);
-        seedOrUpdateUser("Joe Blevel", "b1@test.com", "b1", "B1", User.UserRole.LEARNER);
+        seedOrUpdateUser("Joe A", "a2@test.com", "a2", "A2", User.UserRole.LEARNER);
+        seedOrUpdateUser("Jane B", "b1@test.com", "b1", "B1", User.UserRole.LEARNER);
         seedOrUpdateUser("Admin User", "admin@test.com", "admin", "B1", User.UserRole.ADMIN);
     }
 

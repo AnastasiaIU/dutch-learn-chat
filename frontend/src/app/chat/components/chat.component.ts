@@ -50,7 +50,10 @@ interface ChatDisplayMessage {
           </div>
           <div class="session-info-item topic">
             <div class="session-info-label">Onderwerp</div>
-            <div class="session-info-value">{{ currentTopic || 'Nog niet gekozen' }}</div>
+            <div class="session-info-value">
+              {{ currentTopic || 'Nog niet gekozen' }}
+              <button class="topic-edit-btn" (click)="changeTopic()" title="Onderwerp wijzigen">✎</button>
+            </div>
           </div>
         </div>
 
@@ -105,7 +108,7 @@ interface ChatDisplayMessage {
               [(ngModel)]="userMessage"
               name="userMessage"
               rows="2"
-              [placeholder]="currentSessionId ? 'Schrijf hier in het Nederlands... (of in English)' : 'Kies een onderwerp en stuur je eerste bericht...'"
+              [placeholder]="isTopicChangePending ? 'Typ hier het nieuwe onderwerp...' : (currentSessionId ? 'Schrijf hier in het Nederlands... (of in English)' : 'Kies een onderwerp en stuur je eerste bericht...')"
               (keydown)="onInputKeyDown($event)"
             ></textarea>
 
@@ -164,6 +167,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   userMessage: string = '';
   isLoading: boolean = false;
   errorMessage: string = '';
+  isTopicChangePending: boolean = false;
   currentSessionId: number | null = null;
   currentTopic: string = '';
   currentUsername: string = '';
@@ -200,6 +204,28 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   toggleVocabularyPanel(): void {
     this.showVocabularyPanel = !this.showVocabularyPanel;
+  }
+
+  changeTopic(): void {
+    if (this.isTopicChangePending) {
+      return;
+    }
+
+    this.isTopicChangePending = true;
+    this.userMessage = '';
+    this.errorMessage = '';
+
+    const assistantPrompt = this.toDisplayMessage({
+      id: this.localMessageId--,
+      role: 'ASSISTANT',
+      content: 'Welk onderwerp wil je oefenen? Typ het hieronder.',
+      languageUsed: 'nl',
+      createdAt: new Date().toISOString(),
+    });
+
+    this.messages.push(assistantPrompt);
+    setTimeout(() => this.scrollToBottom(), 100);
+    this.focusComposerInput();
   }
 
   onInputKeyDown(event: KeyboardEvent): void {
@@ -258,6 +284,14 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   sendMessage(): void {
     const content = this.userMessage.trim();
+
+    if (this.isTopicChangePending) {
+      if (!content || this.isLoading) {
+        return;
+      }
+      this.handleTopicChangeMessage(content);
+      return;
+    }
 
     if (!content || this.isLoading) {
       return;
@@ -427,6 +461,66 @@ export class ChatComponent implements OnInit, AfterViewInit {
           sessionId: request.sessionId,
           status: error instanceof HttpErrorResponse ? error.status : 'unknown',
         });
+      }
+    });
+  }
+
+  private handleTopicChangeMessage(topic: string): void {
+    let topicToSet = topic.trim();
+
+    if (!topicToSet) {
+      this.errorMessage = 'Vul een onderwerp in om door te gaan.';
+      return;
+    }
+
+    if (topicToSet.length > this.maxTopicLength) {
+      topicToSet = topicToSet.slice(0, this.maxTopicLength);
+    }
+
+    this.isTopicChangePending = false;
+    this.errorMessage = '';
+    const localUserMessage = this.createLocalUserMessage(topicToSet);
+    this.messages.push(localUserMessage);
+    this.userMessage = '';
+    this.focusComposerInput();
+
+    if (!this.currentSessionId) {
+      this.currentTopic = topicToSet;
+      const assistant = this.toDisplayMessage({
+        id: this.localMessageId--,
+        role: 'ASSISTANT',
+        content: `We praten nu over: ${topicToSet}. Wat wil je daarover vertellen?`,
+        languageUsed: 'nl',
+        createdAt: new Date().toISOString(),
+      });
+      this.messages.push(assistant);
+      setTimeout(() => this.scrollToBottom(), 100);
+      return;
+    }
+
+    this.updateLoadingState(true);
+    this.chatService.updateSessionTopic(this.currentSessionId, topicToSet).pipe(
+      finalize(() => {
+        this.updateLoadingState(false);
+        this.cdr.detectChanges();
+      })
+    ).subscribe({
+      next: (response) => {
+        this.currentTopic = topicToSet;
+        const assistantSource = response.assistantMessage ?? {
+          id: this.localMessageId--,
+          role: 'ASSISTANT',
+          content: `We praten nu over: ${topicToSet}. Wat wil je daarover vertellen?`,
+          languageUsed: 'nl',
+          createdAt: new Date().toISOString(),
+        };
+        const assistant = this.toDisplayMessage(assistantSource);
+        this.messages.push(assistant);
+        setTimeout(() => this.scrollToBottom(), 100);
+      },
+      error: (error) => {
+        this.errorMessage = 'Kan onderwerp niet wijzigen. Probeer het opnieuw.';
+        this.logger.error('Error changing topic', { error });
       }
     });
   }
@@ -622,5 +716,12 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   private storeVocabulary(): void {
     localStorage.setItem(this.vocabularyStorageKey, JSON.stringify(this.vocabularyWords));
+  }
+
+  private scrollToBottom(): void {
+    const container = document.querySelector('.messages-container');
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
   }
 }

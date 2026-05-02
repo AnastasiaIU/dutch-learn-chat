@@ -48,7 +48,7 @@ automation:
 # AI Model Configuration
 ai:
   provider: github
-  language-level: A2-B1
+  language-level: A2
   api-key: ${GITHUB_TOKEN:}
   model: gpt-4o-mini
   temperature: 0.4

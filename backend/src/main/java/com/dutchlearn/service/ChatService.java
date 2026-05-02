@@ -54,6 +54,36 @@ public class ChatService {
     }
 
     /**
+     * Update session topic and return a local assistant acknowledgment message.
+     */
+    @Transactional
+    public ChatMessageResponseDTO updateSessionTopic(Long sessionId, String newTopic) {
+        ChatSession session = chatSessionRepository.findById(sessionId)
+                .orElseThrow(() -> new IllegalArgumentException("Session not found"));
+
+        session.setTopic(newTopic);
+        session = chatSessionRepository.save(session);
+        
+        String cleanTopic = (newTopic == null || newTopic.isBlank()) ? "dagelijkse situaties in Nederland" : newTopic.trim();
+        String content = "We praten nu over: " + cleanTopic + ". Wat wil je daarover vertellen?";
+        
+        // Save local AI acknowledgment
+        ChatMessage assistantMessage = ChatMessage.builder()
+                .session(session)
+                .role(ChatMessage.MessageRole.ASSISTANT)
+                .content(content)
+                .languageUsed("nl")
+                .metadata("{\"responseSource\":\"local\"}")
+                .build();
+        assistantMessage = chatMessageRepository.save(assistantMessage);
+
+        return ChatMessageResponseDTO.builder()
+                .sessionId(session.getId())
+                .assistantMessage(mapToDTO(assistantMessage))
+                .build();
+    }
+
+    /**
      * Send a message and get AI response
      */
         @Transactional

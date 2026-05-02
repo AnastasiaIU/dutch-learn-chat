@@ -74,6 +74,33 @@ export class ChatService {
     );
   }
 
+  updateSessionTopic(sessionId: number, newTopic: string): Observable<ChatMessageResponse> {
+    this.logger.info('Chat updateSessionTopic request started', {
+      sessionId,
+      newTopic,
+    });
+
+    return this.http.put<ChatMessageResponse>(
+      `${this.apiUrl}/sessions/${sessionId}/topic`,
+      { topic: newTopic },
+      { headers: this.authService.getAuthHeaders() }
+    ).pipe(
+      timeout(10000),
+      tap((response) => {
+        this.logger.info('Chat updateSessionTopic request completed', {
+          sessionId,
+        });
+      }),
+      catchError((error: unknown) => {
+        this.logger.error('Chat updateSessionTopic request failed', {
+          sessionId,
+          status: this.extractHttpStatus(error),
+        });
+        return throwError(() => error);
+      })
+    );
+  }
+
   sendMessage(request: ChatMessageRequest): Observable<ChatMessageResponse> {
     this.logger.info('Chat sendMessage request started', {
       sessionId: request.sessionId,

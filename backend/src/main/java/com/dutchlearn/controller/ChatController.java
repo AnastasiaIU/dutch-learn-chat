@@ -3,6 +3,7 @@ package com.dutchlearn.controller;
 import com.dutchlearn.dto.ChatMessageDTO;
 import com.dutchlearn.dto.ChatMessageRequestDTO;
 import com.dutchlearn.dto.ChatMessageResponseDTO;
+import com.dutchlearn.dto.TopicUpdateRequestDTO;
 import com.dutchlearn.entity.ChatSession;
 import com.dutchlearn.logging.LogSanitizer;
 import com.dutchlearn.service.ChatService;
@@ -44,6 +45,25 @@ public class ChatController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         } catch (Exception e) {
             log.error("Create session failed unexpectedly for userId={}", userId, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    /**
+     * Update the topic of a session
+     */
+    @PutMapping("/sessions/{sessionId}/topic")
+    public ResponseEntity<ChatMessageResponseDTO> updateSessionTopic(
+            @PathVariable Long sessionId,
+            @RequestBody TopicUpdateRequestDTO requestDTO) {
+        log.info("Update topic request received for sessionId={} topic={}", sessionId, requestDTO.getTopic());
+        try {
+            ChatMessageResponseDTO response = chatService.updateSessionTopic(sessionId, requestDTO.getTopic());
+            return ResponseEntity.ok(response);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        } catch (Exception e) {
+            log.error("Update topic failed unexpectedly for sessionId={}", sessionId, e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
