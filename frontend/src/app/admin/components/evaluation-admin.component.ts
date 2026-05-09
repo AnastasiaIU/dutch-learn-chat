@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -181,6 +181,7 @@ export class EvaluationAdminComponent implements OnInit {
     private readonly authService: AuthService,
     private readonly router: Router,
     private readonly logger: LoggerService,
+    private readonly cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -204,15 +205,19 @@ export class EvaluationAdminComponent implements OnInit {
       params = params.set('modelTag', this.modelTag.trim());
     }
 
+    console.log('Sending request to', `${this.apiUrl}/messages`);
     this.http.get<EvaluationMessage[]>(
       `${this.apiUrl}/messages`,
       { headers: this.authService.getAuthHeaders(), params }
     ).subscribe({
       next: (messages) => {
+        console.log('Received messages', messages);
         this.messages = messages ?? [];
         this.loading = false;
+        this.cdr.detectChanges();
       },
       error: (error) => {
+        console.error('HTTP Error received', error);
         this.logger.error('Evaluation messages request failed', {
           status: error?.status ?? 'unknown',
         });
@@ -220,11 +225,13 @@ export class EvaluationAdminComponent implements OnInit {
           this.authService.logout();
           this.errorMessage = 'Je sessie is verlopen. Log opnieuw in.';
           this.loading = false;
+          this.cdr.detectChanges();
           void this.router.navigate(['/auth']);
           return;
         }
         this.errorMessage = 'Failed to load evaluation messages.';
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
