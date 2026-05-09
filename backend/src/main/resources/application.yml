@@ -54,7 +54,7 @@ ai:
   provider: github
   language-level: A2
   api-key: ${GITHUB_TOKEN:}
-  model: gpt-4o-mini
+  model: meta-llama-3.1-8b-instruct
   model-tag: ${AI_MODEL_TAG:baseline}
   temperature: 0.4
   max-tokens: 320

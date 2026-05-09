@@ -132,7 +132,20 @@ ai:
   provider: github
   language-level: A2-B1
   api-key: ${GITHUB_TOKEN:}
-  model: gpt-4o-mini # Anthropic-Claude-3.5-Sonnet, google-gemini-1.5-pro
+  model: meta-llama-3.1-8b-instruct
+  # Models:
+  # deepseek-r1
+  # deepseek-r1-0528
+  # deepseek-v3-0324
+  # llama-3.2-11b-vision-instruct
+  # llama-3.2-90b-vision-instruct
+  # llama-3.3-70b-instruct
+  # llama-4-maverick-17b-128e-instruct-fp8
+  # llama-4-scout-17b-16e-instruct
+  # meta-llama-3.1-405b-instruct
+  # meta-llama-3.1-8b-instruct
+  # ministral-3b
+  # mistral-small-2503
   model-tag: ${AI_MODEL_TAG:baseline}
   temperature: 0.4
   max-tokens: 320
