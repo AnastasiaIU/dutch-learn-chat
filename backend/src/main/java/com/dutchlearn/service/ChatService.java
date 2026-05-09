@@ -125,8 +125,25 @@ public class ChatService {
                 session.getTopic(),
                 recentMessages);
 
+        String contentToEvaluate = aiResult.getContent();
+        // Remove the "difficult/hard words" section from the evaluation content
+        String[] markers = {
+            "📚 Moeilijke woorden:", 
+            "Moeilijke woorden:", 
+            "📚 Difficult words:", 
+            "Difficult words:",
+            "Hard words:"
+        };
+        for (String marker : markers) {
+            int idx = contentToEvaluate.indexOf(marker);
+            if (idx != -1) {
+                contentToEvaluate = contentToEvaluate.substring(0, idx).trim();
+                break;
+            }
+        }
+
         CefrEvaluationResult evaluation = cefrResponseValidator.evaluate(
-                aiResult.getContent(),
+                contentToEvaluate,
                 session.getUser().getLanguageLevel());
 
         if (aiResult.isFallbackUsed()) {

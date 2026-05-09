@@ -77,6 +77,9 @@ public class CefrVocabularyService {
             }
 
             totalWordCount = wordsByLevel.values().stream().mapToInt(Set::size).sum();
+            for (CefrLevel level : CefrLevel.values()) {
+                log.info("Level {} has {} words", level, wordsByLevel.get(level).size());
+            }
             dataAvailable = totalWordCount > 0;
 
             if (!dataAvailable) {
