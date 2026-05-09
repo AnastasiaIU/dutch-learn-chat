@@ -17,4 +17,5 @@ public class ChatMessageResponseDTO {
     private Long sessionId;
     private ChatMessageDTO userMessage;
     private ChatMessageDTO assistantMessage;
+    private CefrEvaluationDTO assistantEvaluation;
 }

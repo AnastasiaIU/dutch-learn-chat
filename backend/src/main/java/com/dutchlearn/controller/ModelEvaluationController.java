@@ -1,5 +1,8 @@
 package com.dutchlearn.controller;
 
+import com.dutchlearn.dto.EvaluationMessageDTO;
+import com.dutchlearn.service.EvaluationMessageService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +17,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/evaluation")
 @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:3000"})
+@RequiredArgsConstructor
 @Slf4j
 public class ModelEvaluationController {
+
+    private final EvaluationMessageService evaluationMessageService;
 
     /**
      * Run a model evaluation test and return Pass/Fail metrics.
@@ -43,5 +49,16 @@ public class ModelEvaluationController {
 
         log.info("Evaluation run completed model={} status={}", model, result.get("status"));
         return ResponseEntity.ok(result);
+    }
+
+    /**
+     * List stored assistant responses with evaluation metadata for admin review.
+     */
+    @GetMapping("/messages")
+    public ResponseEntity<List<EvaluationMessageDTO>> getEvaluationMessages(
+            @RequestParam(defaultValue = "50") int limit,
+            @RequestParam(required = false) String modelTag) {
+        List<EvaluationMessageDTO> messages = evaluationMessageService.getAssistantMessages(limit, modelTag);
+        return ResponseEntity.ok(messages);
     }
 }

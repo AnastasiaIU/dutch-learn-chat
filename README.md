@@ -57,7 +57,18 @@ mvn spring-boot:run -D"spring-boot.run.arguments=--spring.profiles.active=dev"
 # API will be available at http://localhost:8080
 ```
 
-**For PostgreSQL:**
+**PostgreSQL via Docker (recommended for local persistence):**
+
+```bash
+# From repo root
+docker compose up -d postgres
+
+# Run backend (defaults to DB_URL=jdbc:postgresql://localhost:5432/dutch_learn_chat)
+cd backend
+mvn spring-boot:run
+```
+
+**For PostgreSQL (manual install):**
 
 1. Create database: `CREATE DATABASE dutch_learn_chat;`
 2. Update credentials in `src/main/resources/application.yml`
@@ -76,6 +87,14 @@ npm start
 
 # App will open at http://localhost:4200
 ```
+
+## Data Attribution
+
+This project uses the [NT2Lex](https://github.com/anaistack/NT2Lex) lexical resource for Dutch vocabulary data:
+
+- **Citation:** Tack, Anaïs, François, Thomas, Desmet, Piet, and Fairon, Cédrick (2018). NT2Lex: A CEFR-Graded Lexical Resource for Dutch as a Foreign Language Linked to Open Dutch WordNet. *Proceedings of the Thirteenth Workshop on Innovative Use of NLP for Building Educational Applications*.
+- **License:** [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- **Authors:** Anaïs Tack, Thomas François, Piet Desmet, Cédrick Fairon
 
 ## 🔧 Tech Stack
 
@@ -115,6 +134,7 @@ npm start
 ### Model Evaluation
 
 - `POST /api/evaluation/run` - Run suite and store report (admin)
+- `GET /api/evaluation/messages` - List stored assistant responses + evaluation metadata (admin)
 
 ## 🔐 Privacy & Ethics
 
@@ -138,9 +158,9 @@ This project prioritizes:
 ```yaml
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/dutch_learn_chat
-    username: postgres
-    password: your_password
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/dutch_learn_chat}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
   jpa:
     hibernate:
       ddl-auto: update
@@ -154,6 +174,11 @@ ai:
   language-level: A2-B1
   api-key: ${GITHUB_TOKEN:}
   model: gpt-4o-mini
+  model-tag: ${AI_MODEL_TAG:baseline}
+
+seed:
+  dev-users:
+    enabled: true
 ```
 
 ### Frontend - `src/environments/environment.ts`

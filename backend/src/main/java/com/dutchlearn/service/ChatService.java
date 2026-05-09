@@ -1,5 +1,8 @@
 package com.dutchlearn.service;
 
+import com.dutchlearn.cefr.CefrEvaluationResult;
+import com.dutchlearn.cefr.CefrResponseValidator;
+import com.dutchlearn.dto.CefrEvaluationDTO;
 import com.dutchlearn.dto.ChatMessageDTO;
 import com.dutchlearn.dto.ChatMessageRequestDTO;
 import com.dutchlearn.dto.ChatMessageResponseDTO;
@@ -10,6 +13,9 @@ import com.dutchlearn.logging.LogSanitizer;
 import com.dutchlearn.repository.ChatMessageRepository;
 import com.dutchlearn.repository.ChatSessionRepository;
 import com.dutchlearn.repository.UserRepository;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -32,6 +38,8 @@ public class ChatService {
     private final ChatMessageRepository chatMessageRepository;
     private final UserRepository userRepository;
     private final AiService aiService;
+        private final CefrResponseValidator cefrResponseValidator;
+        private final ObjectMapper objectMapper;
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
     /**
@@ -117,6 +125,10 @@ public class ChatService {
                 session.getTopic(),
                 recentMessages);
 
+        CefrEvaluationResult evaluation = cefrResponseValidator.evaluate(
+                aiResult.getContent(),
+                session.getUser().getLanguageLevel());
+
         if (aiResult.isFallbackUsed()) {
             log.warn(
                     "AI fallback used sessionId={} model={} latencyMs={}",
@@ -131,13 +143,15 @@ public class ChatService {
                     aiResult.getLatencyMs());
         }
 
+        String mergedMetadata = mergeMetadata(aiResult.getMetadataJson(), evaluation);
+
         // Save AI response
         ChatMessage assistantMessage = ChatMessage.builder()
                 .session(session)
                 .role(ChatMessage.MessageRole.ASSISTANT)
                 .content(aiResult.getContent())
                 .languageUsed("nl")
-                .metadata(aiResult.getMetadataJson())
+                .metadata(mergedMetadata)
                 .build();
         assistantMessage = chatMessageRepository.save(assistantMessage);
 
@@ -146,6 +160,7 @@ public class ChatService {
                 .sessionId(session.getId())
                 .userMessage(mapToDTO(userMessage))
                 .assistantMessage(mapToDTO(assistantMessage))
+                .assistantEvaluation(mapToEvaluationDTO(evaluation))
                 .build();
 
         log.debug(
@@ -188,4 +203,48 @@ public class ChatService {
                 .createdAt(message.getCreatedAt().format(dateFormatter))
                 .build();
     }
+
+        private CefrEvaluationDTO mapToEvaluationDTO(CefrEvaluationResult evaluation) {
+                if (evaluation == null) {
+                        return null;
+                }
+
+                return CefrEvaluationDTO.builder()
+                                .targetLevel(evaluation.getTargetLevel())
+                                .dataAvailable(evaluation.isDataAvailable())
+                                .vocabularySize(evaluation.getVocabularySize())
+                                .vocabularyCoverage(evaluation.getVocabularyCoverage())
+                                .totalWordCount(evaluation.getTotalWordCount())
+                                .unknownWordCount(evaluation.getUnknownWordCount())
+                                .unknownWords(evaluation.getUnknownWords())
+                                .sentenceCount(evaluation.getSentenceCount())
+                                .averageSentenceLength(evaluation.getAverageSentenceLength())
+                                .maxSentenceLength(evaluation.getMaxSentenceLength())
+                                .violations(evaluation.getViolations())
+                                .build();
+        }
+
+        private String mergeMetadata(String metadataJson, CefrEvaluationResult evaluation) {
+                ObjectNode root = objectMapper.createObjectNode();
+                if (metadataJson != null && !metadataJson.isBlank()) {
+                        try {
+                                JsonNode node = objectMapper.readTree(metadataJson);
+                                if (node.isObject()) {
+                                        root.setAll((ObjectNode) node);
+                                }
+                        } catch (Exception ex) {
+                                root.put("metadataParseError", "cefr-metadata-merge-failed");
+                        }
+                }
+
+                if (evaluation != null) {
+                        root.set("cefrEvaluation", objectMapper.valueToTree(evaluation));
+                }
+
+                try {
+                        return objectMapper.writeValueAsString(root);
+                } catch (Exception ex) {
+                        return metadataJson == null ? "" : metadataJson;
+                }
+        }
 }

@@ -17,6 +17,23 @@ mvn clean install
 
 ### Development with PostgreSQL
 
+**Option A: Docker (recommended)**
+
+From the repo root:
+
+```bash
+docker compose up -d postgres
+```
+
+Then run the backend:
+
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+**Option B: Manual install**
+
 Create a PostgreSQL database:
 
 ```sql
@@ -28,9 +45,9 @@ Update `src/main/resources/application.yml` with your database credentials:
 ```yaml
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/dutch_learn_chat
-    username: your_username
-    password: your_password
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/dutch_learn_chat}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
 ```
 
 ### Running the Application
@@ -67,6 +84,7 @@ Access H2 Console: `http://localhost:8080/h2-console`
 **Model Evaluation:**
 
 - `POST /api/evaluation/run` - Run suite and store report (Admin only)
+- `GET /api/evaluation/messages` - List stored assistant responses + evaluation metadata (Admin only)
 
 ### Project Structure
 
@@ -115,6 +133,7 @@ ai:
   language-level: A2-B1
   api-key: ${GITHUB_TOKEN:}
   model: gpt-4o-mini # Anthropic-Claude-3.5-Sonnet, google-gemini-1.5-pro
+  model-tag: ${AI_MODEL_TAG:baseline}
   temperature: 0.4
   max-tokens: 320
   request-timeout-seconds: 45
@@ -142,6 +161,11 @@ Create a `.env` file in `backend/` or set system environment variables:
 GITHUB_TOKEN=your-github-personal-access-token
 JWT_SECRET=your-secret-key
 N8N_API_KEY=local-dev-n8n-key
+DB_URL=jdbc:postgresql://localhost:5432/dutch_learn_chat
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+AI_MODEL_TAG=baseline
+SEED_DEV_USERS=true
 ```
 
 `GITHUB_TOKEN` must include GitHub Models access. If this permission is missing, model calls return `401 Unauthorized` with an error like "models permission is required".

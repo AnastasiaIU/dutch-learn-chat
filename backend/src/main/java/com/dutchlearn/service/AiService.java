@@ -84,6 +84,9 @@ public class AiService {
     @Value("${ai.prompt.version:v1-a2b1-guardrails}")
     private String promptVersion;
 
+    @Value("${ai.model-tag:baseline}")
+    private String modelTag;
+
     // Use GitHub token as API key (which gives access to models for free for students)
     @Value("${ai.api-key:}")
     private String apiKey;
@@ -424,6 +427,7 @@ public class AiService {
         Map<String, Object> metadata = new LinkedHashMap<>();
         metadata.put("provider", provider);
         metadata.put("model", selectedModel);
+        metadata.put("modelTag", modelTag);
         metadata.put("promptVersion", promptVersion);
         metadata.put("languageLevel", languageLevel);
         metadata.put("fallbackUsed", fallbackUsed);

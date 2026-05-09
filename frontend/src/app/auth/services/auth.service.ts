@@ -79,12 +79,12 @@ export class AuthService {
   }
 
   getToken(): string | null {
-    const auth = this.getAuth();
+    const auth = this.getValidAuth();
     return auth ? auth.token : null;
   }
 
   isAuthenticated(): boolean {
-    return this.getAuth() !== null;
+    return this.getValidAuth() !== null;
   }
 
   getRole(): string {
@@ -94,6 +94,21 @@ export class AuthService {
 
   isAdmin(): boolean {
     return this.getRole() === 'ADMIN';
+  }
+
+  private getValidAuth(): AuthResponse | null {
+    const auth = this.getAuth();
+    if (!auth || !auth.token) {
+      return null;
+    }
+
+    if (this.isTokenExpired(auth.token)) {
+      this.logger.warn('Auth token expired or invalid, clearing auth state');
+      this.logout();
+      return null;
+    }
+
+    return auth;
   }
 
   private getStoredAuth(): AuthResponse | null {
@@ -119,13 +134,40 @@ export class AuthService {
 
   getAuthHeaders(): HttpHeaders {
     const token = this.getToken();
-    if (!token) {
-      this.logger.warn('Auth token missing while creating auth headers');
-    }
-
-    return new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
+
+    if (!token) {
+      this.logger.warn('Auth token missing while creating auth headers');
+      return headers;
+    }
+
+    return headers.set('Authorization', `Bearer ${token}`);
+  }
+
+  private isTokenExpired(token: string): boolean {
+    const payload = this.decodeJwtPayload(token);
+    if (!payload || typeof payload.exp !== 'number') {
+      return true;
+    }
+
+    return Date.now() >= payload.exp * 1000;
+  }
+
+  private decodeJwtPayload(token: string): { exp?: number } | null {
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+      return null;
+    }
+
+    try {
+      const base64 = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+      const padded = base64.padEnd(base64.length + (4 - (base64.length % 4 || 4)), '=');
+      const decoded = atob(padded);
+      return JSON.parse(decoded) as { exp?: number };
+    } catch {
+      return null;
+    }
   }
 }

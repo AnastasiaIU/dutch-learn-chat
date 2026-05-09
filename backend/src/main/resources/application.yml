@@ -5,9 +5,9 @@ spring:
     name: dutch-learn-chat
   
   datasource:
-    url: jdbc:postgresql://localhost:5432/dutch_learn_chat
-    username: 
-    password: 
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/dutch_learn_chat}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
   
   jpa:
@@ -45,12 +45,17 @@ automation:
   n8n:
     api-key: ${N8N_API_KEY:}
 
+seed:
+  dev-users:
+    enabled: true
+
 # AI Model Configuration
 ai:
   provider: github
   language-level: A2
   api-key: ${GITHUB_TOKEN:}
   model: gpt-4o-mini
+  model-tag: ${AI_MODEL_TAG:baseline}
   temperature: 0.4
   max-tokens: 320
   request-timeout-seconds: 45
@@ -63,6 +68,24 @@ ai:
     knowledge-base-path: rag/dutch-learning-kb.json
     max-context-items: 3
     max-snippet-chars: 220
+
+cefr:
+  vocabulary:
+    path: cefr/NT2Lex-CGN+ODWN-v01.tsv
+    format: tsv
+    min-entries: 10000
+  allowed-levels:
+    a2: A1,A2
+    b1: A1,A2,B1
+  constraints:
+    a2:
+      max-sentence-length: 12
+      disallowed-tokens: zou,zouden
+    b1:
+      max-sentence-length: 15
+      disallowed-tokens:
+  evaluation:
+    max-unknown-words: 20
 
 # Logging
 logging:

@@ -6,9 +6,9 @@ import com.dutchlearn.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * DevUserSeeder
@@ -16,11 +16,13 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-@Profile("dev")
 public class DevUserSeeder implements ApplicationRunner {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
+    @Value("${seed.dev-users.enabled:true}")
+    private boolean seedEnabled;
 
     public DevUserSeeder(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -29,9 +31,19 @@ public class DevUserSeeder implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
+        if (!seedEnabled) {
+            log.info("Dev user seeding disabled by configuration");
+            return;
+        }
+
+        if (userRepository.count() > 0) {
+            log.info("Dev user seeding skipped because users already exist");
+            return;
+        }
+
         seedOrUpdateUser("Joe A", "a2@test.com", "a2", "A2", User.UserRole.LEARNER);
         seedOrUpdateUser("Jane B", "b1@test.com", "b1", "B1", User.UserRole.LEARNER);
-        seedOrUpdateUser("Admin User", "admin@test.com", "admin", "B1", User.UserRole.ADMIN);
+        seedOrUpdateUser("Admin User", "admin@test.com", "admin", "A2", User.UserRole.ADMIN);
     }
 
     private void seedOrUpdateUser(
