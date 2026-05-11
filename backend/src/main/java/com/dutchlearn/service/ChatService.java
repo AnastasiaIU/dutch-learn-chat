@@ -132,7 +132,8 @@ public class ChatService {
             "Moeilijke woorden:", 
             "📚 Difficult words:", 
             "Difficult words:",
-            "Hard words:"
+            "Hard words:",
+            "📚"
         };
         for (String marker : markers) {
             int idx = contentToEvaluate.indexOf(marker);

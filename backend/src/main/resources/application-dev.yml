@@ -19,7 +19,36 @@ automation:
   n8n:
     api-key: local-dev-n8n-key
 
-# Override AI settings for local testing if needed
+# Local development AI configuration
+# Options for testing:
+#
+# Option 1: Use GitHub Models API (default)
+# - Ensure you have GITHUB_TOKEN set in environment
+# - Supports free student access to multiple models
+#
+# Option 2: Use local Ollama deployment (recommended for offline testing)
+# - First, install Ollama from https://ollama.ai
+# - Run: ollama run llama3.1:8b-instruct
+# - Then uncomment the configuration below:
+#
+# ai:
+#   provider: ollama
+#   model: llama3.1:8b-instruct
+#   ollama:
+#     host: http://localhost:11434
+#   mock:
+#     enabled: false
+#
+# Option 3: Use mock responses (for testing without AI)
+# - No API keys or services needed
+# - Useful for frontend testing
+#
 # ai:
 #   mock:
-#     enabled: true # Uncomment if you don't have a GitHub token yet
+#     enabled: true
+
+# Optional: Override defaults for local testing
+# ai:
+#   provider: ollama
+#   temperature: 0.3
+#   max-tokens: 256

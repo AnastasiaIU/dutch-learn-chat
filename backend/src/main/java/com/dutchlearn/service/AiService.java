@@ -2,22 +2,14 @@ package com.dutchlearn.service;
 
 import com.dutchlearn.entity.ChatMessage;
 import com.dutchlearn.logging.LogSanitizer;
-import com.fasterxml.jackson.databind.JsonNode;
+import com.dutchlearn.service.provider.AiProvider;
+import com.dutchlearn.service.provider.AiProviderFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,9 +24,6 @@ import java.util.regex.Pattern;
 @Slf4j
 public class AiService {
 
-    private static final String GITHUB_MODELS_URL = "https://models.inference.ai.azure.com/chat/completions";
-    private static final int MAX_HISTORY_MESSAGES = 10;
-        private static final int MAX_HISTORY_MESSAGE_CHARS = 500;
         private static final String DEFAULT_TOPIC = "dagelijkse situaties in Nederland";
         private static final List<String> TOPIC_SUGGESTIONS = List.of(
             "werk",
@@ -74,12 +63,10 @@ public class AiService {
 
     private final ObjectMapper objectMapper;
     private final RagService ragService;
+    private final AiProviderFactory providerFactory;
 
     @Value("${ai.language-level:A2}")
     private String defaultLanguageLevel;
-
-    @Value("${ai.provider:github}")
-    private String provider;
 
     @Value("${ai.prompt.version:v1-a2b1-guardrails}")
     private String promptVersion;
@@ -87,28 +74,14 @@ public class AiService {
     @Value("${ai.model-tag:baseline}")
     private String modelTag;
 
-    // Use GitHub token as API key (which gives access to models for free for students)
-    @Value("${ai.api-key:}")
-    private String apiKey;
-
-    // e.g. gpt-4o, Anthropic-Claude-3.5-Sonnet, google-gemini-1.5-pro
     @Value("${ai.model:gpt-4o-mini}")
     private String selectedModel;
-
-    @Value("${ai.temperature:0.4}")
-    private double temperature;
-
-    @Value("${ai.max-tokens:320}")
-    private int maxTokens;
 
     @Value("${ai.max-input-chars:800}")
     private int maxInputChars;
 
     @Value("${ai.max-history-chars:2400}")
     private int maxHistoryChars;
-
-    @Value("${ai.request-timeout-seconds:45}")
-    private int requestTimeoutSeconds;
 
     @Value("${ai.mock.enabled:false}")
     private boolean mockMode;
@@ -147,9 +120,10 @@ public class AiService {
             : List.of();
         String ragContext = ragService.buildContextBlock(ragMatches, ragMaxSnippetChars);
 
+        String providerName = providerFactory.getProviderName();
         log.debug(
             "AI generation started provider={} model={} languageLevel={} historyCount={} ragEnabled={} ragHits={} userMessageLength={}",
-            provider,
+            providerName,
             selectedModel,
             effectiveLevel,
             recentMessages == null ? 0 : recentMessages.size(),
@@ -157,24 +131,25 @@ public class AiService {
             ragMatches.size(),
             LogSanitizer.safeLength(normalizedMessage));
 
-        if (mockMode || apiKey == null || apiKey.isBlank()) {
-            log.warn(
-                "AI generation using fallback because API key is missing or mock mode is enabled (expected GITHUB_TOKEN)");
+        if (mockMode) {
+            log.warn("AI generation using fallback because mock mode is enabled");
             return buildFallbackResult(
                     normalizedMessage,
                     effectiveLevel,
                     topic,
                     ragMatches,
                     System.currentTimeMillis() - startedAt,
-                    "API key missing or mock mode enabled. Set GITHUB_TOKEN.");
+                    "Mock mode is enabled.");
         }
 
         try {
             String prompt = buildSystemPrompt(effectiveLevel, topic, ragContext);
-            String modelResponse = callUniversalApi(prompt, normalizedMessage, recentMessages);
+            AiProvider provider = providerFactory.getProvider();
+            provider.validateConfiguration();
+            String modelResponse = provider.callModel(prompt, normalizedMessage, recentMessages);
 
             long latencyMs = System.currentTimeMillis() - startedAt;
-            log.info("AI generation completed provider={} model={} latencyMs={}", provider, selectedModel, latencyMs);
+            log.info("AI generation completed provider={} model={} latencyMs={}", providerName, selectedModel, latencyMs);
 
             return buildResult(
                     modelResponse,
@@ -187,7 +162,7 @@ public class AiService {
         } catch (Exception ex) {
             log.warn(
                 "AI generation failed provider={} model={} errorType={} errorMessage={}",
-                provider,
+                providerName,
                 selectedModel,
                 ex.getClass().getSimpleName(),
                 ex.getMessage());
@@ -201,76 +176,7 @@ public class AiService {
         }
     }
 
-    private String callUniversalApi(String systemPrompt, String userMessage, List<ChatMessage> recentMessages) throws Exception {
-        log.debug("Calling provider API model={} timeoutSeconds={}", selectedModel, requestTimeoutSeconds);
 
-        ObjectNode payload = objectMapper.createObjectNode();
-        payload.put("model", selectedModel); // Sends gpt/claude/gemini interchangeably
-        // Temperature (0.0 - 1.0): Controls randomness vs. determinism in model output.
-        // - Low (0.0-0.5): More deterministic, consistent, predictable phrasing.
-        // - High (0.7-1.0+): More creative, varied, less predictable responses.
-        // Example: 0.4 (our setting) = reliable, consistent Dutch teaching responses.
-        // For language learning, we prefer lower values to ensure predictable quality.
-        payload.put("temperature", temperature);
-        // max_tokens controls the maximum length of the AI model's response.
-        payload.put("max_tokens", maxTokens);
-
-        ArrayNode messages = payload.putArray("messages");
-        messages.addObject()
-                // Use "system" role for instructions across model families.
-                .put("role", "system")
-                .put("content", systemPrompt);
-
-        for (ChatMessage message : limitHistory(recentMessages)) {
-            String role = message.getRole() == ChatMessage.MessageRole.USER ? "user" : "assistant";
-            messages.addObject()
-                    .put("role", role)
-                    .put("content", truncate(message.getContent(), MAX_HISTORY_MESSAGE_CHARS));
-        }
-
-        messages.addObject()
-                .put("role", "user")
-                .put("content", userMessage == null ? "" : userMessage.trim());
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(GITHUB_MODELS_URL))
-                .timeout(Duration.ofSeconds(requestTimeoutSeconds))
-                .header("Authorization", "Bearer " + apiKey)
-                .header("Content-Type", "application/json")
-                .POST(HttpRequest.BodyPublishers.ofString(payload.toString(), StandardCharsets.UTF_8))
-                .build();
-
-        HttpResponse<String> response = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(10))
-                .build()
-                .send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
-
-        if (response.statusCode() >= 400) {
-            String responseBody = response.body() == null ? "" : response.body();
-            String responseBodyOneLine = responseBody.replace("\r", " ").replace("\n", " ").trim();
-            String loweredBody = responseBodyOneLine.toLowerCase();
-
-            if (response.statusCode() == 401
-                    && loweredBody.contains("models")
-                    && loweredBody.contains("permission is required")) {
-                throw new IllegalStateException(
-                    "API returned status 401: token is missing GitHub Models permission. "
-                        + "Create a token with Models access and set GITHUB_TOKEN.");
-            }
-
-            String detail = responseBodyOneLine.isBlank() ? "" : " body=" + truncate(responseBodyOneLine, 240);
-            throw new IllegalStateException("API returned status " + response.statusCode() + detail);
-        }
-
-        JsonNode root = objectMapper.readTree(response.body());
-        String content = root.path("choices").path(0).path("message").path("content").asText("").trim();
-
-        if (content.isBlank()) {
-            throw new IllegalStateException("Model returned empty content");
-        }
-
-        return content;
-    }
 
     private String buildSystemPrompt(String languageLevel, String topic, String ragContext) {
         String effectiveTopic = resolveTopic(topic);
@@ -301,10 +207,13 @@ public class AiService {
                 // - Output format:
                 .append("Uitvoerformaat:\n")
                 // - First 1 short paragraph with the main answer.
-                .append("- Eerst 1 korte alinea met het hoofdantwoord.\n")
-                // - Then only if useful: exactly this section with max 2 words:
-                .append("- Daarna alleen indien nuttig: exact deze sectie met maximaal 2 woorden:\n")
-                // - 📚 Difficult words:
+                .append("1. Eerst je antwoord: 1 korte alinea met het hoofdantwoord.\n")
+                // - Then: a follow-up question that keeps conversation going (not final, not the end)
+                .append("\n2. Daarna een vraag: Eindig met een vriendelijke vraag om het gesprek voort te zetten.\n")
+                .append("   (Dit is NIET het einde - de gebruiker kan meer vragen stellen!)\n")
+                .append("   Voorbeelden: \"En jij, hoe gaat het met jou?\" of \"Wat is jouw ervaring hiermee?\"\n")
+                // - Finally: difficult words section (only if useful, max 2 words)
+                .append("\n3. Tot slot de woorden: Alleen indien nuttig, exact deze sectie met maximaal 2 woorden:\n")
                 .append("📚 Moeilijke woorden:\n")
                 // - - word: short explanation in English
                 .append("- woord: korte uitleg in het Engels\n")
@@ -318,35 +227,6 @@ public class AiService {
         }
 
         return prompt.toString();
-    }
-
-    private List<ChatMessage> limitHistory(List<ChatMessage> recentMessages) {
-        if (recentMessages == null || recentMessages.isEmpty()) {
-            return List.of();
-        }
-
-        int fromIndex = Math.max(0, recentMessages.size() - MAX_HISTORY_MESSAGES);
-        List<ChatMessage> latestMessages = recentMessages.subList(fromIndex, recentMessages.size());
-
-        if (maxHistoryChars <= 0) {
-            return latestMessages;
-        }
-
-        int totalChars = 0;
-        List<ChatMessage> selected = new ArrayList<>();
-        for (int index = latestMessages.size() - 1; index >= 0; index--) {
-            ChatMessage message = latestMessages.get(index);
-            int messageLength = message.getContent() == null
-                    ? 0
-                    : Math.min(message.getContent().length(), MAX_HISTORY_MESSAGE_CHARS);
-            if (totalChars + messageLength > maxHistoryChars) {
-                break;
-            }
-            totalChars += messageLength;
-            selected.add(0, message);
-        }
-
-        return selected;
     }
 
     // Fallback is used when the model cannot be called; it keeps replies safe and short.
@@ -425,7 +305,7 @@ public class AiService {
             String responseSource) {
 
         Map<String, Object> metadata = new LinkedHashMap<>();
-        metadata.put("provider", provider);
+        metadata.put("provider", providerFactory.getProviderName());
         metadata.put("model", selectedModel);
         metadata.put("modelTag", modelTag);
         metadata.put("promptVersion", promptVersion);

@@ -26,7 +26,7 @@ spring:
   
   web:
     cors:
-      allowed-origins: http://localhost:4200,http://localhost:3000
+      allowed-origins: http://localhost:4200,http://localhost:3000,http://localhost:11434
       allowed-methods: GET,POST,PUT,DELETE,OPTIONS
       allowed-headers: '*'
       allow-credentials: true
@@ -51,14 +51,32 @@ seed:
 
 # AI Model Configuration
 ai:
-  provider: github
+  # Provider selection: github | ollama
+  provider: ollama
+  
+  # Ollama models: use 4-bit or 7-bit quantization for better quality
+  # Available options: llama3.1:8b (default), llama3.1:8b-q4_K_M (4-bit, good balance)
+  # Avoid q2_K (2-bit) - too aggressive quantization causes poor responses
+  model: llama3.1:8b
+  
+  # Model variant tag for tracking experiments/versions
+  model-tag: ${AI_MODEL_TAG:baseline-ollama}
   language-level: A2
-  api-key: ${GITHUB_TOKEN:}
-  model: meta-llama-3.1-8b-instruct
-  model-tag: ${AI_MODEL_TAG:baseline}
   temperature: 0.4
   max-tokens: 320
-  request-timeout-seconds: 45
+  max-input-chars: 800
+  max-history-chars: 2400
+  request-timeout-seconds: 120
+
+  # GitHub Models provider configuration
+  # Set provider to "github" and configure these settings
+  api-key: ${GITHUB_TOKEN:}
+  
+  # Ollama provider configuration
+  # Set provider to "ollama" and configure these settings
+  ollama:
+    host: ${OLLAMA_HOST:http://localhost:11434}
+  
   mock:
     enabled: false
   prompt:
