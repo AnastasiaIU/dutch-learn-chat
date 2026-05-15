@@ -1,0 +1,2116 @@
+[
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Ik gaat naar school",
+    "assistant": "Correct: Ik ga naar school. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Hij hebben een huis",
+    "assistant": "Correct: Hij heeft een huis. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: De water is koud",
+    "assistant": "Correct: Het water is koud. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Jij heb een broer",
+    "assistant": "Correct: Jij hebt een broer. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Zij are gaat naar school",
+    "assistant": "Correct: Zij gaan naar school. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is eten?",
+    "assistant": "Eten is wat je eet."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is drinken?",
+    "assistant": "Drinken is wat je drinkt."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is werken?",
+    "assistant": "Werken is voor geld doen."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is huis?",
+    "assistant": "Een huis is waar je woont."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is school?",
+    "assistant": "School is waar je leert."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Ga jij naar school?",
+    "assistant": "Ja, ik ga naar school."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Hou je van thee?",
+    "assistant": "Ja, ik hou van thee."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Heb je een huis?",
+    "assistant": "Ja, ik heb een huis."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat eet je graag?",
+    "assistant": "Ik eet graag brood."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Werk jij?",
+    "assistant": "Ja, ik werk elke dag."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about a meal",
+    "assistant": "- Eet jij graag brood?\n- Ja, brood is lekker!"
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Meet someone",
+    "assistant": "- Hallo, ik ben Anna.\n- Hallo, ik ben Tom."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Ask about home",
+    "assistant": "- Heb jij een huis?\n- Ja, mijn huis is klein."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Discuss work",
+    "assistant": "- Werk jij veel?\n- Ja, elke dag."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about family",
+    "assistant": "- Heb jij een familie?\n- Ja, ik heb ouders."
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Zij gaat naar school",
+    "assistant": "Correct: Zij gaan naar school. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Dat ben niet goed",
+    "assistant": "Correct: Dat is niet goed. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Wij is in het park",
+    "assistant": "Correct: Wij zijn in het park."
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Ze hebben een fiets",
+    "assistant": "Correct: Ze hebben een fiets. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Ik eten brood en kaas",
+    "assistant": "Correct: Ik eet brood en kaas."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is vrienden?",
+    "assistant": "Vrienden zijn mensen die je mag."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is kat?",
+    "assistant": "Een kat is een klein huisdier."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is auto?",
+    "assistant": "Auto is transport op wielen."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is trein?",
+    "assistant": "Trein is transport op rails."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is lief?",
+    "assistant": "Lief betekent aardig en voorzichtig."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Heb je vrienden?",
+    "assistant": "Ja, ik heb vrienden."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Hou je van katten?",
+    "assistant": "Ja, katten zijn leuk."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Reis je met trein?",
+    "assistant": "Ja, ik reis met trein."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Waar woon je?",
+    "assistant": "Ik woon in Amsterdam."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Is je leraar aardig?",
+    "assistant": "Ja, mijn leraar is aardig."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about pets",
+    "assistant": "- Heb je een kat?\n- Ja, mijn kat is wit."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about travel",
+    "assistant": "- Hoe ga je naar school?\n- Ik ga met de fiets."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Weekend plans",
+    "assistant": "- Wat ga jij doen?\n- Ik speel met vrienden."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Ask basic info",
+    "assistant": "- Wat is je naam?\n- Ik ben Marco."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Discuss hobbies",
+    "assistant": "- Wat is je hobby?\n- Ik hou van tekenen."
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Hij kopen de trein",
+    "assistant": "Correct: Hij koopt de trein. Of verleden: Hij kocht. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Je moet gaat naar kantoor",
+    "assistant": "Correct: Je moet naar kantoor gaan. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Zij wil naar strand gaan",
+    "assistant": "Correct: Zij wil naar het strand gaan. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Ik denken dat regen morgen",
+    "assistant": "Correct: Ik denk dat het morgen regent. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Zij hebben vriends gisteren",
+    "assistant": "Correct: Zij hebben vrienden. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is voorzichtig?",
+    "assistant": "Voorzichtig betekent zorgvuldig omgaan met dingen."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is weer?",
+    "assistant": "Weer is zon, regen, wind of sneeuw."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat betekent kiezen?",
+    "assistant": "Kiezen betekent bepalen wat je wilt."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is medische hulp?",
+    "assistant": "Medische hulp komt van een dokter."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is afspraak?",
+    "assistant": "Afspraak is plan op bepaald moment."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Hoe was het weer gisteren?",
+    "assistant": "Gisteren regende het veel."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Ga je volgende week weg?",
+    "assistant": "Ja, ik ga naar Spanje."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Heb je afspraak vandaag?",
+    "assistant": "Ja, om twee uur."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Welk vervoer gebruik je?",
+    "assistant": "Ik gebruik graag de fiets."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Hoe voel je je?",
+    "assistant": "Ik voel me goed vandaag."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss vacation",
+    "assistant": "- Waar wil je op vakantie?\n- Ik wil naar Italië."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Visit doctor",
+    "assistant": "- Wat is het probleem?\n- Mijn hoofd doet pijn."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Public transport",
+    "assistant": "- Hoe kom je hier?\n- Ik neem de trein."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Make appointment",
+    "assistant": "- Ik wil afspraak maken.\n- Prima, donderdag?"
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss weather",
+    "assistant": "- Wat slecht weer vandaag!\n- Ja, veel regen."
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: De man hebben gaat Amsterdam",
+    "assistant": "Correct: De man gaat naar Amsterdam. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Ik kan niet spreken Nederlands",
+    "assistant": "Correct: Ik kan Nederlands niet spreken. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: We hebben niet genoeg geld",
+    "assistant": "Correct: We hebben niet genoeg geld. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Dit probleem is moeilijker",
+    "assistant": "Correct: Dit probleem is moeilijk. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Zij gaan morgen naar winkel",
+    "assistant": "Correct: Zij gaan morgen naar de winkel. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is baan?",
+    "assistant": "Baan is het werk dat je doet."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat betekent saai?",
+    "assistant": "Saai betekent niet interessant of grappig."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is advies?",
+    "assistant": "Advies is suggestie van iemand om je te helpen."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat betekent lenen?",
+    "assistant": "Lenen betekent iets van iemand nemen en later terugbrengen."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is gesprek?",
+    "assistant": "Gesprek is communicatie tussen twee of meer mensen."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is jouw baan?",
+    "assistant": "Ik ben verpleegster."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat vind je saai?",
+    "assistant": "Lange wachtrijen zijn saai."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Kun je advies geven?",
+    "assistant": "Ja, graag! Wat is probleem?"
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wil je geld lenen?",
+    "assistant": "Nee, dank je. Ik heb genoeg."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Hoe was je gesprek?",
+    "assistant": "Het gesprek was heel goed."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Ask for advice",
+    "assistant": "- Ik heb probleem. Kan ik vragen?\n- Ja, graag!"
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss work",
+    "assistant": "- Wat vind je van baan?\n- Mijn baan is goed."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Borrow something",
+    "assistant": "- Kan ik je pen lenen?\n- Ja, hier!"
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Have conversation",
+    "assistant": "- Zullen we Nederlands spreken?\n- Ja, graag!"
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss free time",
+    "assistant": "- Wat doe je in vrije tijd?\n- Ik lees graag."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Zou jij helpen mij?",
+    "assistant": "Correct: Zou jij mij helpen? Pronomen hoort na werkwoord."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: De regering moet economie verbeteren",
+    "assistant": "Correct: De regering moet de economie verbeteren."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Dit vraagstuk die veel aandacht nodig",
+    "assistant": "Correct: Dit vraagstuk dat veel aandacht nodig heeft."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Ik ben niet akkoord jouw mening",
+    "assistant": "Correct: Ik ben niet akkoord met jouw mening."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: De regering voorstel ingediend systeem",
+    "assistant": "Correct: De regering heeft voorstel ingediend."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat betekent verantwoordelijkheid?",
+    "assistant": "Verantwoordelijkheid is antwoord geven voor acties."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is duurzaamheid?",
+    "assistant": "Duurzaamheid betekent geen schade aan milieu."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat betekent integratie?",
+    "assistant": "Integratie is samenwerken van verschillende culturen."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is voordeel?",
+    "assistant": "Voordeel betekent iets dat goed helpt."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat betekent communicatie?",
+    "assistant": "Communicatie is uitwisselen van informatie mensen."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is jouw mening over migratie?",
+    "assistant": "Migratie brengt uitdagingen en voordelen samen."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hoe kan Nederland inclusief blijven?",
+    "assistant": "Door gelijke kansen en goed onderwijs."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat zijn jouw verwachtingen werkgever?",
+    "assistant": "Ik verwacht eerlijk salaris en groei."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Welke rol speelt onderwijs integratie?",
+    "assistant": "Onderwijs is cruciaal voor integratie."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hoe zorg je gezondheid?",
+    "assistant": "Ik eet gezond en beweeg regelmatig."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss career plans",
+    "assistant": "- Wat zijn jouw ambities?\n- Ik wil leidinggevende functie bereiken."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss integration",
+    "assistant": "- Wat vind je van integratie?\n- Integratie is wederzijds belangrijk."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss environment",
+    "assistant": "- Denk je duurzaamheid is belangrijk?\n- Absoluut, actie nu essentieel."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss communication",
+    "assistant": "- Hoe communiceer je werkgever?\n- Ik ben open en eerlijk."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss cultural differences",
+    "assistant": "- Wat zijn verschillen met Nederland?\n- Nederland is sneller en directer."
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Ik zijn grappig",
+    "assistant": "Correct: Ik ben grappig. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Hij gaan naar huis",
+    "assistant": "Correct: Hij gaat naar huis. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Zij heeft twee broers",
+    "assistant": "Correct: Zij hebben twee broers. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: We is in het café",
+    "assistant": "Correct: We zijn in het café."
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Jij drink melk",
+    "assistant": "Correct: Jij drinkt melk. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Dit zijn niet mijn boek",
+    "assistant": "Correct: Dit is niet mijn boek."
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Ze werkt veel",
+    "assistant": "Correct: Ze werken veel. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Ik hou niet van regen",
+    "assistant": "Correct: Ik hou niet van regen."
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: De meisje zijn aardig",
+    "assistant": "Correct: Het meisje is aardig. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Jij hebben vrienden",
+    "assistant": "Correct: Jij hebt vrienden. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is slapen?",
+    "assistant": "Slapen betekent rust nemen."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is lopen?",
+    "assistant": "Lopen betekent stappen nemen."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is winkel?",
+    "assistant": "Winkel is plek waar je koopt."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is park?",
+    "assistant": "Park is een groene plek in de stad."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is muziek?",
+    "assistant": "Muziek is geluid dat aangenaam is om te"
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is boek?",
+    "assistant": "Boek heeft veel bladzijden."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is snel?",
+    "assistant": "Snel betekent niet langzaam."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is groot?",
+    "assistant": "Groot betekent niet klein."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is warm?",
+    "assistant": "Warm betekent hoge temperatuur."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Slaap je goed?",
+    "assistant": "Ja, ik slaap goed."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Hou je van lopen?",
+    "assistant": "Ja, lopen is gezond."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Ben je in de winkel?",
+    "assistant": "Ja, ik ben in winkel."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Hou je van park?",
+    "assistant": "Ja, park is mooi."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Hou je van muziek?",
+    "assistant": "Ja, ik hou van muziek."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Lees je veel?",
+    "assistant": "Ja, ik lees veel."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Ben je snel?",
+    "assistant": "Ja, ik ben snel."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Is het groot?",
+    "assistant": "Ja, het is groot."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Is het warm vandaag?",
+    "assistant": "Ja, vandaag is warm."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about sleeping",
+    "assistant": "- Slaap je goed?\n- Ja, elke nacht."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about walking",
+    "assistant": "- Hou je van lopen?\n- Ja, in het park."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: At the store",
+    "assistant": "- Ben je in winkel?\n- Ja, ik koop melk."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about park",
+    "assistant": "- Ga je naar park?\n- Ja, zaterdag."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about music",
+    "assistant": "- Hou je van muziek?\n- Ja, rock!"
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about reading",
+    "assistant": "- Lees je graag?\n- Ja, elke dag."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about speed",
+    "assistant": "- Ben jij snel?\n- Ja, erg snel!"
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about size",
+    "assistant": "- Is het groot?\n- Ja, heel groot."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about weather",
+    "assistant": "- Hoe is weer?\n- Vandaag warm."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Talk about food",
+    "assistant": "- Hou je van eten?\n- Ja, ik eet graag."
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Ik woon in Amsterdam veel jaren",
+    "assistant": "Correct: Ik woon in Amsterdam. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Zij gaan naar winkelen",
+    "assistant": "Correct: Zij gaan winkelen. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is stad?",
+    "assistant": "Stad is plek met veel huizen."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is straat?",
+    "assistant": "Straat is waar auto rijdt."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Waar woon je?",
+    "assistant": "Ik woon in Amsterdam."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Ga je naar werk?",
+    "assistant": "Ja, elke dag."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Where do you live",
+    "assistant": "- Waar woon jij?\n- In Utrecht."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Ask about work",
+    "assistant": "- Ga je naar werk?\n- Ja, ik werk."
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Gisteren ik gaan naar film",
+    "assistant": "Correct: Gisteren ging ik naar film. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Zij kunnen niet komen vorige week",
+    "assistant": "Correct: Zij konden niet komen vorige week. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Ik heb een auto wanneer ik was jong",
+    "assistant": "Correct: Ik had een auto. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: We eten pasta en drinken wijn",
+    "assistant": "Correct: We eten pasta en drinken wijn. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Zij werkte hier drie jaar",
+    "assistant": "Correct: Zij werkten hier drie jaar. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Ik ben geweest in Parijs",
+    "assistant": "Correct: Ik ben geweest in Parijs. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Jij moet gaat naar dokter",
+    "assistant": "Correct: Jij moet naar dokter gaan. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Ze kan niet spreekt Nederlands goed",
+    "assistant": "Correct: Ze kan Nederlands niet goed spreken. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: We gingen naar strand omdat zon",
+    "assistant": "Correct: We gingen naar strand omdat zon scheen."
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Zij heeft drie kinderen en twee katten",
+    "assistant": "Correct: Zij hebben drie kinderen en twee katten. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat betekent verkouden?",
+    "assistant": "Verkouden betekent ziek van griep."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is verjaardag?",
+    "assistant": "Verjaardag is dag van je geboorte."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat betekent vermoeien?",
+    "assistant": "Vermoeien betekent moe worden."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is vervoer?",
+    "assistant": "Vervoer is auto, fiets, trein."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat betekent genoeg?",
+    "assistant": "Genoeg betekent niet meer nodig."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is voorkeur?",
+    "assistant": "Voorkeur is wat je graag wilt."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat betekent vergeten?",
+    "assistant": "Vergeten betekent niet onthouden."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is belangrijk?",
+    "assistant": "Belangrijk betekent erg nodig."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat betekent vieren?",
+    "assistant": "Vieren betekent feest houden."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Ben je verkouden?",
+    "assistant": "Ja, ik ben verkouden."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wanneer is jouw verjaardag?",
+    "assistant": "Mijn verjaardag is mei."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Voel je je vermoeid?",
+    "assistant": "Ja, ik ben erg vermoeid."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is jouw voorkeur?",
+    "assistant": "Ik hou van koffie graag."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Is dit belangrijk?",
+    "assistant": "Ja, dit is heel belangrijk."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Hoe vier je verjaardag?",
+    "assistant": "Ik vier met familie."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Vergeet je dingen?",
+    "assistant": "Ja, soms vergeet ik."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Hoeveel vervoer mogelijkheden heb je?",
+    "assistant": "Ik heb fiets en auto."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss illness",
+    "assistant": "- Ben je verkouden?\n- Ja, vorige week."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss birthday",
+    "assistant": "- Wanneer vier je verjaardag?\n- In juni."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss fatigue",
+    "assistant": "- Voel je je moe?\n- Ja, erg vermoeid."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss preferences",
+    "assistant": "- Wat is jouw voorkeur?\n- Ik hou van thee."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss importance",
+    "assistant": "- Is dit belangrijk?\n- Ja, erg belangrijk."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss celebration",
+    "assistant": "- Hoe vier je?\n- Met vrienden."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss memory",
+    "assistant": "- Vergeet je veel?\n- Nee, zelden."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss transport",
+    "assistant": "- Hoe kom je naar werk?\n- Met auto meestal."
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Ik ging naar zee vorig weekend",
+    "assistant": "Correct: Ik ging naar zee vorig weekend. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is verhuizen?",
+    "assistant": "Verhuizen betekent naar ander huis gaan."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Ben je verhuisd?",
+    "assistant": "Ja, vorig jaar verhuisd."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss moving",
+    "assistant": "- Ben je verhuisd?\n- Ja, in april."
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Zij hebben geslapen tot tien uur",
+    "assistant": "Correct: Zij hebben geslapen tot tien uur. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is vroeg?",
+    "assistant": "Vroeg betekent voor normale tijd."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Slaap je vroeg?",
+    "assistant": "Ja, ik slaap vroeg graag."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss sleep time",
+    "assistant": "- Slaap je vroeg?\n- Ja, om negen uur."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Indien we zouden hebben geweten, we zouden gaan",
+    "assistant": "Correct: Indien we zouden hebben geweten, zouden we gaan."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: De bedrijf wat groeit snel",
+    "assistant": "Correct: Het bedrijf dat snel groeit."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Ik ben niet akkoord uw suggestie",
+    "assistant": "Correct: Ik ben niet akkoord met uw suggestie."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Zij heeft mogelijkheden voor promotie daarom ze werkt hard",
+    "assistant": "Correct: Zij werkten hard voor promotie."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Dit vraagstuk welke belangrijk is",
+    "assistant": "Correct: Dit vraagstuk dat belangrijk is."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: We moeten aandacht geven aan detail",
+    "assistant": "Correct: We moeten aandacht geven aan details."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: De resultaten toont verbetering",
+    "assistant": "Correct: De resultaten tonen verbetering."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Ik zien geen reden voor afzeggen",
+    "assistant": "Correct: Ik zie geen reden voor afzegging."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is onderneming?",
+    "assistant": "Onderneming is bedrijf dat iets nieuws probeert en risico neemt."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat betekent innovatie?",
+    "assistant": "Innovatie is iets nieuws uitvinden."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is globalisering?",
+    "assistant": "Globalisering betekent dat landen en culturen steeds meer verbonden worden."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat betekent duurzaam?",
+    "assistant": "Duurzaam betekent kan lang doorgaan."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is samenwerking?",
+    "assistant": "Samenwerking betekent samen werken aan een gemeenschappelijk doel."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat betekent verscheidenheid?",
+    "assistant": "Verscheidenheid betekent veel verschillende soorten of achtergronden."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is zakelijk?",
+    "assistant": "Zakelijk betreft business en handel."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat betekent strategisch?",
+    "assistant": "Strategisch betekent geplande aanpak."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat vind je van ondernemerschap?",
+    "assistant": "Ondernemerschap vereist moed en ideeën."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hoe belangrijk is innovatie?",
+    "assistant": "Innovatie is cruciaal voor groei."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat zijn gevolgen globalisering?",
+    "assistant": "Globalisering brengt kansen en uitdagingen."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hoe beïnvloedt duurzaamheid bedrijven?",
+    "assistant": "Duurzaamheid verandert productiemethoden."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Waarom is samenwerking belangrijk?",
+    "assistant": "Samenwerking bereikt meer dan alleen."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat betekent werknemersverscheidenheid?",
+    "assistant": "Verscheidenheid betekent verschillende achtergronden."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hoe verloop zakelijk communicatie?",
+    "assistant": "Zakelijk communicatie is professioneel en duidelijk."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss entrepreneurship",
+    "assistant": "- Wat vind jij van ondernemerschap?\n- Het vereist voorbereiding en doorzettingsvermogen."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss innovation",
+    "assistant": "- Hoe belangrijk is innovatie?\n- Zeer belangrijk voor concurrentie."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss globalization",
+    "assistant": "- Wat zijn effecten globalisering?\n- Positief en negatief beide."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss sustainability",
+    "assistant": "- Moet bedrijf duurzaam zijn?\n- Absoluut, dat is toekomst."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss teamwork",
+    "assistant": "- Waarom samenwerken nodig?\n- Niemand kan alles alleen doen."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss diversity",
+    "assistant": "- Waarom is diversiteit waardevol?\n- Brengt verschillende perspectief mee."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss business ethics",
+    "assistant": "- Hoe belangrijk is ethiek?\n- Fundamenteel voor vertrouwen."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Economie het groeit sneller dan verwacht",
+    "assistant": "Correct: De economie groeit sneller dan verwacht."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is infrastructuur?",
+    "assistant": "Infrastructuur is basis van systeem."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is jouw professionele ambitie?",
+    "assistant": "Ik wil leiderschap rol bereiken."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss career goals",
+    "assistant": "- Wat zijn je ambities?\n- Ik wil management functie."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: De training die ik heb ontvangen was uitstekend",
+    "assistant": "Correct: De training die ik ontving was uitstekend."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat betekent competentie?",
+    "assistant": "Competentie is vaardigheid om taak uit te voeren."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hoe ontwikkel je professioneel?",
+    "assistant": "Door training en ervaringlopende verdieping."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss professional development",
+    "assistant": "- Hoe groeien je vaardigheden?\n- Door praktijk en studie."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Policies welke gelden voor iedereen",
+    "assistant": "Correct: Policies die voor iedereen gelden."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is regelgeving?",
+    "assistant": "Regelgeving zijn regels om te volgen."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hoe belangrijk regels?",
+    "assistant": "Regels essentieel voor orde."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss company policies",
+    "assistant": "- Volg je bedrijfsregels?\n- Ja, altijd zeer belangrijk."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Zij heeft bereikt wat zij voorselde",
+    "assistant": "Correct: Zij bereikten wat zij voorstelden."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is tevredenheid?",
+    "assistant": "Tevredenheid is satisfactie en voldoening."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Ben je tevreden met progressie?",
+    "assistant": "Ja, maar altijd kamer voor verbetering."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss job satisfaction",
+    "assistant": "- Hoe tevreden ben je?\n- Erg tevreden met roltaken."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Het proces dat wij volgen zeer effectief",
+    "assistant": "Correct: Het proces dat wij volgen is effectief."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is efficiëntie?",
+    "assistant": "Efficiëntie is optimaal resource gebruik."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hoe verbeter efficiëntie?",
+    "assistant": "Door proces optimalisatie en training."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss efficiency",
+    "assistant": "- Hoe verbeteren we efficiency?\n- Automatisering en training helpt."
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Ik gaat naar restaurant",
+    "assistant": "Correct: Ik ga naar restaurant. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Ze is van Nederland",
+    "assistant": "Correct: Ze zijn van Nederland. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is restaurant?",
+    "assistant": "Restaurant is een plek waar je eten koopt"
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is Nederland?",
+    "assistant": "Nederland is een land in Europa."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Eet je in restaurant?",
+    "assistant": "Ja, soms ik eet daar."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Ben je van Nederland?",
+    "assistant": "Nee, ik ben van Spanje."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: At restaurant",
+    "assistant": "- Hou je van restaurant?\n- Ja, eten is lekker."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Discuss origin",
+    "assistant": "- Van waar ben je?\n- Ik ben van Polen."
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Dit huis hebben groot",
+    "assistant": "Correct: Dit huis is groot. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Corrigeer deze zin: Jij ben leeraar",
+    "assistant": "Correct: Jij bent leeraar. (Correct verb form)"
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is leeraar?",
+    "assistant": "Leeraar is persoon die lesgeven aan studenten."
+  },
+  {
+    "level": "A1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Wat is student?",
+    "assistant": "Student is persoon die les krijgt en leert."
+  },
+  {
+    "level": "A1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Ben je leeraar?",
+    "assistant": "Nee, ik ben student."
+  },
+  {
+    "level": "A1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for absolute beginners (A1 level). Use very simple vocabulary and short sentences (max 8 words). Only use present tense. Be encouraging and patient.",
+    "user": "Gesprek: Discuss profession",
+    "assistant": "- Wat is je baan?\n- Ik ben student."
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Gisteren ik heb gegaan naar bioscoop",
+    "assistant": "Correct: Gisteren ben ik naar bioscoop gegaan. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Zij zouden kunnen spreken Nederlands",
+    "assistant": "Correct: Zij zouden Nederlands kunnen spreken. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is bioscoop?",
+    "assistant": "Bioscoop is plek waar je films ziet."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat betekent interessant?",
+    "assistant": "Interessant betekent erg leuk om te zien of lezen."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Ga je naar bioscoop?",
+    "assistant": "Ja, ik ga graag films zien."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Is het interessant?",
+    "assistant": "Ja, het is heel interessant."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss cinema",
+    "assistant": "- Ga je naar bioscoop?\n- Ja, dit weekend."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss interests",
+    "assistant": "- Wat vind je interessant?\n- Film en boeken."
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Ik moet werk vorig maand voltooid",
+    "assistant": "Correct: Ik moest het werk vorig maand voltooien. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Ze hebben mij gegeven nieuws gisteren",
+    "assistant": "Correct: Ze gaven me gisteren nieuws. (Grammar rule)"
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat is nieuws?",
+    "assistant": "Nieuws is informatie wat gebeurd."
+  },
+  {
+    "level": "A2",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Wat betekent voltooien?",
+    "assistant": "Voltooien betekent werk afmaken."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Voltooide je werk?",
+    "assistant": "Ja, gisteren voltooid."
+  },
+  {
+    "level": "A2",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Hoorde je nieuws?",
+    "assistant": "Ja, ik hoorde gisteren."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss news",
+    "assistant": "- Hoorde je nieuws?\n- Nee, vertel me."
+  },
+  {
+    "level": "A2",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Gesprek: Discuss completion",
+    "assistant": "- Voltooide je project?\n- Ja, afgelopen week."
+  },
+  {
+    "level": "A2",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for elementary students (A2 level). Use simple vocabulary and sentences (max 12 words). Present and simple past tense are fine. Provide clear, supportive explanations.",
+    "user": "Corrigeer deze zin: Kunnen jij helpen mij morgen?",
+    "assistant": "Correct: Kun je me morgen helpen? (Grammar rule)"
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Dit bedrijf welke grote en succesvolle is",
+    "assistant": "Correct: Dit bedrijf dat groot en succesvol is."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Zij hebben bereikt succesvol hun doelen",
+    "assistant": "Correct: Zij bereikten met succes hun doelen."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is succesvolle?",
+    "assistant": "Succesvol betekent het behalen van doelen."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is ondersteuning?",
+    "assistant": "Ondersteuning is hulp en bijstand geven."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hoe wordt succes bereikt?",
+    "assistant": "Door harde werk en strategie."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hebben je steun nodig?",
+    "assistant": "Ja, ondersteuning van team is belangrijk."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss success",
+    "assistant": "- Wat betekent succes voor jou?\n- Bereiken wat je wilt."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss support",
+    "assistant": "- Hoe krijg je steun?\n- Van collega's en management."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: De markt die groeit significante is",
+    "assistant": "Correct: De markt groeit aanzienlijk."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Ik ben overtuigd welke dat dit plan werkt",
+    "assistant": "Correct: Ik ben overtuigd dat dit plan werkt."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is overtuigde?",
+    "assistant": "Overtuigd betekent zeker ervan zijn."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is significante?",
+    "assistant": "Significant betekent belangrijk en aanzienlijk."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Ben je overtuigd van plan?",
+    "assistant": "Ja, het is goed doordacht."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat betekent significante groei?",
+    "assistant": "Aanzienlijke verbetering vorig periode."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss conviction",
+    "assistant": "- Ben je ervan overtuigd?\n- Absoluut, bewijzen spreken."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss market",
+    "assistant": "- Groeit markt significant?\n- Ja, veel potentieel."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: De regering moet implementeren nieuwe policy",
+    "assistant": "Correct: De regering moet nieuw beleid invoeren."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Wat welke jij voorstel moet overwogen zijn",
+    "assistant": "Correct: Het voorstel dat jij doet moet overwogen worden."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is implementatie?",
+    "assistant": "Implementatie is iets in praktijk brengen."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is voorstel?",
+    "assistant": "Voorstel is suggestie voor actie."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hoe implementeer je verandering?",
+    "assistant": "Door planning en stap-voor-stap aanpak."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat voorstel je?",
+    "assistant": "Ik stel voor meer opleiding."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss policy",
+    "assistant": "- Wat nieuw beleid voorstel?\n- Flexibel werken implementatie."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss proposals",
+    "assistant": "- Wat is jouw voorstel?\n- Meer investering in training."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Die analyse die ik heb doen is grondig",
+    "assistant": "Correct: De analyse die ik heb gedaan is grondig."
+  },
+  {
+    "level": "B1",
+    "type": "correction",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Corrigeer deze zin: Deze resultaten betekent verbeteringen positief",
+    "assistant": "Correct: Deze resultaten betekenen positieve verbeteringen."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is analyse?",
+    "assistant": "Analyse is onderzoek en beoordeling diepte."
+  },
+  {
+    "level": "B1",
+    "type": "word_explanation",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Wat is grondig?",
+    "assistant": "Grondig betekent volledig en zorgvuldig."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Hoe analyse je data?",
+    "assistant": "Door tools en statistische methoden."
+  },
+  {
+    "level": "B1",
+    "type": "qa",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Zijn resultaten positief?",
+    "assistant": "Ja, zij tonen verbeteringen duidelijk."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss analysis",
+    "assistant": "- Hoe analyseer je data?\n- Met software en statistica."
+  },
+  {
+    "level": "B1",
+    "type": "dialogue",
+    "system": "You are a Dutch language tutor for intermediate students (B1 level). Use intermediate vocabulary and complex sentences (max 15 words). All tenses are appropriate. Provide nuanced explanations.",
+    "user": "Gesprek: Discuss results",
+    "assistant": "- Wat resultaten tonen?\n- Positieve trends aanzienlijk."
+  }
+]
