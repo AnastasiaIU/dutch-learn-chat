@@ -63,3 +63,7 @@ frontend/src/environments/environment.prod.ts
 
 # GitHub Copilot instructions
 .github/copilot-instructions.md
+
+# Models
+models/llama-3.1-8b-dutch-tutor-merged
+models/llama-3.1-8b-dutch-tutor-gguf
