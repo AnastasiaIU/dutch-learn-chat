@@ -54,19 +54,17 @@ ai:
   # Provider selection: github | ollama
   provider: ollama
   
-  # Ollama models: use 4-bit or 7-bit quantization for better quality
-  # Available options: llama3.1:8b (default), llama3.1:8b-q4_K_M (4-bit, good balance)
-  # Avoid q2_K (2-bit) - too aggressive quantization causes poor responses
-  model: llama3.1:8b
+  # Set the model
+  model: tinyllama
   
   # Model variant tag for tracking experiments/versions
-  model-tag: ${AI_MODEL_TAG:baseline-ollama}
+  model-tag: ${AI_MODEL_TAG:tinyllama}
   language-level: A2
   temperature: 0.4
   max-tokens: 320
   max-input-chars: 800
   max-history-chars: 2400
-  request-timeout-seconds: 120
+  request-timeout-seconds: 360
 
   # GitHub Models provider configuration
   # Set provider to "github" and configure these settings
