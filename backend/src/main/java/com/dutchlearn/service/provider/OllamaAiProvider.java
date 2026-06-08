@@ -42,7 +42,7 @@ public class OllamaAiProvider implements AiProvider {
     @Value("${ai.temperature:0.4}")
     private double temperature;
 
-    @Value("${ai.max-tokens:320}")
+    @Value("${ai.max-tokens:100}")
     private int maxTokens;
 
     @Value("${ai.request-timeout-seconds:360}")

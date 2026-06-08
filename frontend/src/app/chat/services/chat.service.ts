@@ -57,7 +57,7 @@ export class ChatService {
       {},
       { params, headers: this.authService.getAuthHeaders() }
     ).pipe(
-      timeout(120000),
+      timeout(360000),
       tap((session) => {
         this.logger.info('Chat createSession request completed', {
           userId,
@@ -85,7 +85,7 @@ export class ChatService {
       { topic: newTopic },
       { headers: this.authService.getAuthHeaders() }
     ).pipe(
-      timeout(120000),
+      timeout(360000),
       tap((response) => {
         this.logger.info('Chat updateSessionTopic request completed', {
           sessionId,
@@ -113,7 +113,7 @@ export class ChatService {
       request,
       { headers: this.authService.getAuthHeaders() }
     ).pipe(
-      timeout(120000),
+      timeout(360000),
       tap((response) => {
         this.logger.info('Chat sendMessage request completed', {
           sessionId: response.sessionId,
@@ -137,7 +137,7 @@ export class ChatService {
       `${this.apiUrl}/history/${sessionId}`,
       { headers: this.authService.getAuthHeaders() }
     ).pipe(
-      timeout(120000),
+      timeout(360000),
       tap((history) => {
         this.logger.debug('Chat history request completed', {
           sessionId,
@@ -161,7 +161,7 @@ export class ChatService {
       `${this.apiUrl}/sessions/${userId}`,
       { headers: this.authService.getAuthHeaders() }
     ).pipe(
-      timeout(120000),
+      timeout(360000),
       tap((sessions) => {
         this.logger.debug('Chat getUserSessions request completed', {
           userId,

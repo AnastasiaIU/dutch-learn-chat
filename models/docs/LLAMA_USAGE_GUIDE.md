@@ -31,7 +31,13 @@ cd llama.cpp
 python convert_hf_to_gguf.py "<path to the merged model>" --outfile "<path to the output.gguf>"
 ```
 
-## Step 3: Create Modelfile
+## Step 3: Quantize the Converted Model (optionally)
+
+```bash
+.\llama-quantize.exe "<model.gguf>" "<model.Q4_K_M.gguf>" <quantization_type> (e.g., Q4_K_M, q3_K_M)
+```
+
+## Step 4: Create Modelfile
 
 Create `Modelfile` with content:
 
@@ -39,13 +45,13 @@ Create `Modelfile` with content:
 FROM ./output.gguf
 ```
 
-## Step 4: Load Model into Ollama
+## Step 5: Load Model into Ollama
 
 ```bash
 ollama create <model_name> -f Modelfile
 ```
 
-## Step 5: Integrate with Backend
+## Step 6: Integrate with Backend
 
 Set in `application.yml`:
 

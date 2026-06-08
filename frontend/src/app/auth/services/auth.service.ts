@@ -46,7 +46,7 @@ export class AuthService {
 
     return this.http
       .post<AuthResponse>(`${this.apiUrl}/register`, data)
-      .pipe(timeout(10000));
+      .pipe(timeout(360000));
   }
 
   login(data: UserLogin): Observable<AuthResponse> {
@@ -54,7 +54,7 @@ export class AuthService {
 
     return this.http
       .post<AuthResponse>(`${this.apiUrl}/login`, data)
-      .pipe(timeout(10000));
+      .pipe(timeout(360000));
   }
 
   logout(): void {

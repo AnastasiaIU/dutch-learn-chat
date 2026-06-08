@@ -55,13 +55,13 @@ ai:
   provider: ollama
   
   # Set the model
-  model: tinyllama
+  model: geitje
   
   # Model variant tag for tracking experiments/versions
-  model-tag: ${AI_MODEL_TAG:tinyllama}
+  model-tag: ${AI_MODEL_TAG:ollama-geitje}
   language-level: A2
   temperature: 0.4
-  max-tokens: 320
+  max-tokens: 100
   max-input-chars: 800
   max-history-chars: 2400
   request-timeout-seconds: 360

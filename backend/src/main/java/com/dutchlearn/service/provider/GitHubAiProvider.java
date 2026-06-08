@@ -46,7 +46,7 @@ public class GitHubAiProvider implements AiProvider {
     @Value("${ai.max-tokens:320}")
     private int maxTokens;
 
-    @Value("${ai.request-timeout-seconds:45}")
+    @Value("${ai.request-timeout-seconds:360}")
     private int requestTimeoutSeconds;
 
     @Override
