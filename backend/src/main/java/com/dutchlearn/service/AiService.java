@@ -180,6 +180,7 @@ public class AiService {
 
     private String buildSystemPrompt(String languageLevel, String topic, String ragContext) {
         String effectiveTopic = resolveTopic(topic);
+        boolean isB1 = languageLevel != null && languageLevel.toUpperCase().contains("B1");
 
         StringBuilder prompt = new StringBuilder();
         // - You are a friendly Dutch conversation partner for adult NT2 learners.
@@ -190,8 +191,10 @@ public class AiService {
                 .append(".\n\n")
                 // - Mandatory rules:
                 .append("Verplichte regels:\n")
-                // - 1. Use short, clear sentences (avg 8-12 words).
-                .append("1. Gebruik korte, duidelijke zinnen (gemiddeld 8-12 woorden).\n")
+                // - 1. Use short, clear sentences (sentence length depends on level).
+                .append("1. Gebruik korte, duidelijke zinnen (gemiddeld ")
+                .append(isB1 ? "12-15" : "8-12")
+                .append(" woorden).\n")
                 // - 2. Prefer present tense and everyday vocabulary.
                 .append("2. Gebruik vooral tegenwoordige tijd en dagelijkse woordenschat.\n")
                 // - 3. Stay on topic: {topic}.
@@ -203,7 +206,21 @@ public class AiService {
                 // - 5. Politely refuse harmful, offensive, illegal, or hateful requests in Dutch.
                 .append("5. Weiger schadelijke, beledigende, illegale of haatdragende verzoeken beleefd in het Nederlands.\n")
                 // - 6. Never say you are human or provide official language certification.
-                .append("6. Zeg nooit dat je een mens bent of officiële taalcertificering geeft.\n\n")
+                .append("6. Zeg nooit dat je een mens bent of officiële taalcertificering geeft.\n");
+
+        // - 7. Morphological constraints (stricter for A2, more flexible for B1).
+        if (isB1) {
+            // - For B1: mention conditional forms are acceptable but should be used sparingly
+            prompt.append("7. Gebruik conditionele vormen (zou, zouden) voorzichtig en alleen als nodig; vermijd complexe verleden tijden (had gehad).\n");
+        } else {
+            // - For A2: avoid these forms entirely
+            prompt.append("7. Vermijd voorwaardelijke vormen (zou, zouden, werd, werden) en ingewikkelde verleden tijden (had, hebben).\n");
+        }
+        
+        // - 8. Vocabulary appropriateness (adapt to level).
+        prompt.append("8. Gebruik alleen woorden die NT2-leerders op ")
+                .append(isB1 ? "B1" : "A2")
+                .append("-niveau kennen; vermijd gespecialiseerde woordenschat.\n\n")
                 // - Output format:
                 .append("Uitvoerformaat:\n")
                 // - First 1 short paragraph with the main answer.

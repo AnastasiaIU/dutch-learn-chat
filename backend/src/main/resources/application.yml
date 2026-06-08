@@ -96,12 +96,12 @@ cefr:
   constraints:
     a2:
       max-sentence-length: 12
-      disallowed-tokens: zou,zouden
+      disallowed-tokens: zou,zouden,werd,werden,had,hebben
     b1:
       max-sentence-length: 15
       disallowed-tokens:
   evaluation:
-    max-unknown-words: 20
+    max-unknown-words-percentage: 30
 
 # Logging
 logging:

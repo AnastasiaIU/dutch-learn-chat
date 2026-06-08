@@ -37,8 +37,9 @@ public class CefrResponseValidator {
     @Value("${cefr.constraints.b1.disallowed-tokens:}")
     private String b1DisallowedTokens;
 
-    @Value("${cefr.evaluation.max-unknown-words:20}")
-    private int maxUnknownWords;
+
+    @Value("${cefr.evaluation.max-unknown-words-percentage:30}")
+    private int maxUnknownWordsPercentage;
 
     public CefrEvaluationResult evaluate(String responseText, String targetLevel) {
         CefrLevel level = CefrLevel.fromString(targetLevel).orElse(CefrLevel.A2);
@@ -86,6 +87,14 @@ public class CefrResponseValidator {
             vocabularyCoverage = (double) knownCount / (double) tokens.size();
         }
 
+        // Check vocabulary percentage threshold (e.g., >30% unknown words = violation)
+        if (dataAvailable && !tokens.isEmpty() && maxUnknownWordsPercentage > 0) {
+            double unknownPercentage = ((double) unknownWords.size() / (double) tokens.size()) * 100.0;
+            if (unknownPercentage > maxUnknownWordsPercentage) {
+                violations.add("EXCESSIVE_UNKNOWN_WORDS_PERCENTAGE:" + String.format("%.1f%%", unknownPercentage));
+            }
+        }
+
         int maxAllowedSentenceLength = level == CefrLevel.A2 ? a2MaxSentenceLength : b1MaxSentenceLength;
         if (maxAllowedSentenceLength > 0 && maxSentenceLength > maxAllowedSentenceLength) {
             violations.add("SENTENCE_TOO_LONG");
@@ -106,7 +115,7 @@ public class CefrResponseValidator {
 
         List<String> unknownPreview = unknownWords.stream()
                 .distinct()
-                .limit(maxUnknownWords)
+                .limit(10)
                 .collect(Collectors.toList());
 
         return CefrEvaluationResult.builder()
