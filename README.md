@@ -4,39 +4,71 @@
 
 An educational web application designed to help immigrants in the Netherlands practise Dutch conversation at A2/B1 language level in a safe, judgment-free environment.
 
-## 🎯 Project Goals
+## 📦 Deliverables Summary
 
-- Provide accessible, flexible Dutch conversation practice
-- Support vocabulary learning with explanations and tracking
-- Privacy-first design compliant with GDPR
-- User-friendly interface with AI disclosure and feedback mechanisms
+### ✅ Implemented Features
 
-## 📋 Key Features
+- **User Authentication & Registration** - Email/password login with JWT tokens
+- **Role-Based Access Control** - LEARNER and ADMIN roles with Spring Security
+- **Chat Interface** - Real-time AI conversation at A2/B1 language level
+- **Language Level Selection** - Users choose A2 or B1 during registration
+- **AI Model Abstraction** - Multiple models supported, switchable via configuration
+- **Admin Evaluation Dashboard** - Metrics screen for model comparison and evaluation
+- **Database Layer** - PostgreSQL with JPA
+- **Complete API** - All endpoints for auth, chat, and evaluation
 
-✅ **AI-Powered Web Chat** - Responds at A2/B1 Dutch level  
-✅ **Vocabulary Support** - Highlighting, explanations, translations  
-✅ **Personal Tracking** - Browser-side vocabulary tracking for privacy  
-✅ **User Authentication** - Secure login and session management  
-✅ **AI Disclosure** - Clear transparency about AI interaction  
-✅ **Feedback Mechanism** - Users can flag confusing or incorrect responses  
-✅ **RAG Context Injection** - Responses can use trusted local Dutch-learning context  
-✅ **Model Evaluation Loop** - Repeatable quality checks with pass/fail metrics  
-✅ **n8n Automation Ready** - Daily model report workflow template included  
-✅ **Admin Evaluation Dashboard** - Run evaluations and inspect stored report history  
-✅ **Role-Based Access** - Admin-only evaluation APIs and frontend route guarding  
+### ⚠️ Partially Implemented / Placeholders
+
+- **Vocabulary Tracking** - Infrastructure exists, highlighting not functional (time constraint)
+- **Feedback System** - Data collection working, analysis/dashboard not implemented (time constraint)
+- **RAG (Retrieval-Augmented Generation)** - Not implemented (complexity & time)
+- **N8N Automation** - Configuration placeholder only, no active integration
+
+### 📍 Key Implementation Locations
+
+- **RBAC & Admin Access** - `backend/src/main/java/com/dutchlearn/config/SecurityConfig.java` (line 43: `.requestMatchers("/api/evaluation/**").hasRole("ADMIN")`)
+- **Admin Evaluation Screen** - `frontend/src/app/admin/components/evaluation-admin.component.ts`
+- **Model Switching** - `backend/src/main/resources/application.yml` (AI model configuration)
+- **AI Abstraction** - `backend/src/main/java/com/dutchlearn/service/ai/` (provider pattern)
 
 ## 🏗️ Project Structure
 
 ```
 dutch-learn-chat/
-├── backend/                 # Spring Boot REST API
-│   ├── src/main/java/...
+├── backend/                          # Spring Boot REST API (Java 21)
+│   ├── src/main/java/com/dutchlearn/
+│   │   ├── config/                  # Spring & security configuration
+│   │   │   ├── SecurityConfig.java  # RBAC & JWT setup
+│   │   │   └── AiConfig.java        # Model configuration
+│   │   ├── controller/              # REST endpoints
+│   │   │   ├── AuthController.java
+│   │   │   ├── ChatController.java
+│   │   │   └── ModelEvaluationController.java (admin)
+│   │   ├── service/
+│   │   │   ├── ai/                  # AI provider abstraction
+│   │   │   ├── AuthService.java
+│   │   │   └── ChatService.java
+│   │   ├── entity/                  # JPA entities
+│   │   └── security/                # JWT authentication
 │   ├── pom.xml
 │   └── README.md
-├── frontend/                # Angular v21+ web app
-│   ├── src/
+├── frontend/                         # Angular v21+ web app (TypeScript)
+│   ├── src/app/
+│   │   ├── auth/                    # Authentication feature
+│   │   │   ├── guards/              # auth.guard.ts, admin.guard.ts
+│   │   │   └── services/
+│   │   ├── chat/                    # Chat interface
+│   │   │   ├── components/
+│   │   │   └── services/
+│   │   ├── admin/                   # Admin evaluation dashboard
+│   │   │   └── components/
+│   │   └── shared/                  # Shared utilities
 │   ├── package.json
 │   └── README.md
+├── docs/
+│   ├── DELIVERABLES.md              # Feature & implementation details
+│   └── [additional documentation]
+├── docker-compose.yml               # PostgreSQL setup
 ├── .gitignore
 └── README.md
 ```
@@ -102,7 +134,7 @@ This project uses the [NT2Lex](https://github.com/anaistack/NT2Lex) lexical reso
 
 - **Framework:** Spring Boot 4.0
 - **Language:** Java 21
-- **Database:** PostgreSQL / H2 (dev)
+- **Database:** PostgreSQL
 - **Security:** JWT Token Authentication
 - **ORM:** Spring Data JPA
 - **Build:** Maven
@@ -116,79 +148,6 @@ This project uses the [NT2Lex](https://github.com/anaistack/NT2Lex) lexical reso
 - **State Management:** RxJS/BehaviorSubject
 - **Build Tool:** Angular CLI
 
-## 📡 API Endpoints
-
-### Auth
-
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
-- `GET /api/auth/health` - Health check
-
-### Chat
-
-- `POST /api/chat/session` - Create new session
-- `POST /api/chat/message` - Send message & get AI response
-- `GET /api/chat/history/{sessionId}` - Get message history
-- `GET /api/chat/sessions/{userId}` - Get user's sessions
-
-### Model Evaluation
-
-- `POST /api/evaluation/run` - Run suite and store report (admin)
-- `GET /api/evaluation/messages` - List stored assistant responses + evaluation metadata (admin)
-
-## 🔐 Privacy & Ethics
-
-This project prioritizes:
-
-- **Data Minimisation** - Only collect what's necessary
-- **Browser-side Storage** - Vocabulary tracking stored locally, not on server
-- **AI Transparency** - Clear disclosure that users interact with AI
-- **User Control** - Explicit feedback mechanism for responses
-- **GDPR Compliance** - Netherlands-compliant data handling
-
-## 📚 Documentation
-
-- [Backend README](backend/README.md) - Setup, configuration, architecture
-- [Frontend README](frontend/README.md) - Setup, building, folder structure
-
-## 📝 Configuration Files
-
-### Backend - `src/main/resources/application.yml`
-
-```yaml
-spring:
-  datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/dutch_learn_chat}
-    username: ${DB_USERNAME:postgres}
-    password: ${DB_PASSWORD:postgres}
-  jpa:
-    hibernate:
-      ddl-auto: update
-
-jwt:
-  secret: ${JWT_SECRET:dev-secret-key}
-  expiration: 86400000
-
-ai:
-  provider: github
-  language-level: A2-B1
-  api-key: ${GITHUB_TOKEN:}
-  model: gpt-4o-mini
-  model-tag: ${AI_MODEL_TAG:baseline}
-
-seed:
-  dev-users:
-    enabled: true
-```
-
-### Frontend - `src/environments/environment.ts`
-
-```typescript
-export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:8080/api'
-};
-```
 
 ## 📄 License
 
@@ -198,19 +157,12 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 
 MIT License allows free use, modification, and distribution with attribution.
 
+---
+
 ## ⚠️ Disclaimer
 
 This is an educational prototype. Key notes:
 
 - AI responses may contain errors
 - Not certified for language assessment
-- Vocabulary tracking is local (not synced across devices)
 - Designed for practice, not replacement for human tutors
-
-## 🔗 Resources
-
-- [Angular Documentation](https://angular.io/docs)
-- [Spring Boot Documentation](https://spring.io/projects/spring-boot)
-- [JWT Authentication](https://jwt.io/)
-- [CEFR Language Levels](https://www.coe.int/en/web/common-european-framework-reference-languages)
-- [Dutch Learning Resources](https://www.nt2.nl/)

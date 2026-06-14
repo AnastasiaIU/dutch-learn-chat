@@ -12,6 +12,9 @@ Thumbs.db
 *.swo
 *~
 
+# GitHub
+.github/
+
 # Logs
 logs/
 *.log
