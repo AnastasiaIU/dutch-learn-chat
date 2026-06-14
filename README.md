@@ -6,6 +6,12 @@ An educational web application designed to help immigrants in the Netherlands pr
 
 ## 📦 Deliverables Summary
 
+### 📄 Supporting Documents
+
+- **Dutch Chatbot Benchmarking Report** - Comparative evaluation of 7 language models (TinyLlama, Llama 2, Llama 3.1 8B, GPT-4o, GEITje) on A2/B1 Dutch conversation tasks, measuring vocabulary coverage, violation rates, and output quality. Key finding: fine-tuning smaller models did not yield meaningful performance gains; overall performance remains strongly driven by the model’s baseline capability.
+- **Metrics Explanation** - Guide to evaluation metrics used for assessing CEFR-level responses: vocabulary coverage %, maximum sentence length, and unknown word count thresholds. Includes interpretation guidelines for quality assessment.
+- **Potential Impact Assessment** - Comprehensive analysis of societal implications including privacy risks, data bias, cultural representation, transparency requirements, inclusivity concerns, and sustainability considerations. Includes utopian and dystopian future scenarios.
+
 ### ✅ Implemented Features
 
 - **User Authentication & Registration** - Email/password login with JWT tokens
@@ -66,8 +72,9 @@ dutch-learn-chat/
 │   ├── package.json
 │   └── README.md
 ├── docs/
-│   ├── DELIVERABLES.md              # Feature & implementation details
-│   └── [additional documentation]
+│   ├── dutch_chatbot_benchmarking_report_txt.txt     # Model evaluation & comparison
+│   ├── metrics_explanation_txt.txt                   # Evaluation metrics guide
+│   └── potential_impact_assessment_txt.txt           # Societal impact analysis
 ├── docker-compose.yml               # PostgreSQL setup
 ├── .gitignore
 └── README.md
